@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Copa World App</title>
+<title>Copa World 2026</title>
 
 <style>
 
@@ -12,87 +12,84 @@
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family:Arial, Helvetica, sans-serif;
+    font-family:Arial;
 }
 
 body{
-    background:linear-gradient(135deg,#009739,#002776);
-    min-height:100vh;
+    background:linear-gradient(135deg,#009739,#001f5c);
     color:white;
+    min-height:100vh;
     overflow-x:hidden;
 }
 
-/* TOPO */
+/* MENU */
 
-header{
-    padding:25px;
-    text-align:center;
-    background:rgba(0,0,0,0.2);
+nav{
+    width:100%;
+    background:rgba(0,0,0,0.3);
+    padding:20px;
+    display:flex;
+    justify-content:center;
+    gap:15px;
+    flex-wrap:wrap;
     backdrop-filter:blur(10px);
-    box-shadow:0 5px 20px rgba(0,0,0,0.3);
+    position:sticky;
+    top:0;
+    z-index:999;
 }
 
-header h1{
-    font-size:42px;
-    animation: brilho 2s infinite alternate;
+nav button{
+    padding:12px 20px;
+    border:none;
+    border-radius:15px;
+    cursor:pointer;
+    background:yellow;
+    color:black;
+    font-weight:bold;
+    transition:0.3s;
 }
 
-header p{
-    margin-top:10px;
-    opacity:0.9;
+nav button:hover{
+    transform:scale(1.08);
 }
 
-@keyframes brilho{
+/* PÁGINAS */
+
+.page{
+    display:none;
+    padding:40px;
+    animation:fade 0.5s;
+}
+
+.active{
+    display:block;
+}
+
+@keyframes fade{
     from{
-        text-shadow:0 0 10px yellow;
+        opacity:0;
+        transform:translateY(20px);
     }
     to{
-        text-shadow:0 0 25px white;
+        opacity:1;
+        transform:translateY(0);
     }
 }
 
-/* CONTAINER */
+/* TÍTULOS */
 
-.container{
-    width:90%;
-    max-width:1200px;
-    margin:auto;
-    padding:30px 0;
-}
-
-/* CARDS */
-
-.cards{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-    gap:25px;
+h1{
+    margin-bottom:20px;
+    font-size:40px;
 }
 
 .card{
     background:rgba(255,255,255,0.12);
-    border:1px solid rgba(255,255,255,0.2);
-    border-radius:25px;
     padding:25px;
+    border-radius:25px;
+    margin-top:20px;
     backdrop-filter:blur(12px);
-    transition:0.3s;
-    position:relative;
-    overflow:hidden;
-}
-
-.card:hover{
-    transform:translateY(-10px) scale(1.03);
-    box-shadow:0 10px 30px rgba(0,0,0,0.4);
-}
-
-.card::before{
-    content:'';
-    position:absolute;
-    width:180px;
-    height:180px;
-    background:rgba(255,255,255,0.08);
-    border-radius:50%;
-    top:-60px;
-    right:-60px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.3);
 }
 
 /* JOGOS */
@@ -101,244 +98,331 @@ header p{
     display:flex;
     justify-content:space-between;
     align-items:center;
-    margin:20px 0;
-    font-size:22px;
+    padding:20px;
+    margin-top:15px;
+    background:rgba(255,255,255,0.08);
+    border-radius:15px;
 }
 
-.placar{
-    font-size:35px;
-    font-weight:bold;
+.data{
     color:yellow;
+    font-size:14px;
+}
+
+/* INPUTS */
+
+input, select{
+    width:100%;
+    padding:12px;
+    margin-top:12px;
+    border:none;
+    border-radius:10px;
+    font-size:16px;
 }
 
 /* BOTÕES */
 
-button{
+.btn{
+    margin-top:15px;
     width:100%;
     padding:14px;
     border:none;
-    border-radius:15px;
+    border-radius:12px;
     background:yellow;
-    color:black;
     font-weight:bold;
     cursor:pointer;
     transition:0.3s;
-    font-size:16px;
 }
 
-button:hover{
-    transform:scale(1.05);
-    background:white;
+.btn:hover{
+    transform:scale(1.03);
 }
 
-/* PALPITES */
+/* CAMPO */
 
-input{
-    width:48%;
-    padding:12px;
-    border:none;
-    border-radius:12px;
-    margin-top:10px;
-    font-size:18px;
-    text-align:center;
+.campo{
+    margin-top:25px;
+    background:green;
+    border-radius:20px;
+    padding:30px;
+    position:relative;
+    height:700px;
+    border:5px solid white;
 }
 
-/* TIME IDEAL */
-
-.jogadores{
-    display:grid;
-    grid-template-columns:repeat(2,1fr);
-    gap:10px;
-    margin-top:15px;
-}
+/* JOGADORES */
 
 .player{
-    background:rgba(255,255,255,0.15);
-    padding:12px;
-    border-radius:12px;
-    cursor:pointer;
-    transition:0.3s;
-    text-align:center;
-}
-
-.player:hover{
-    background:yellow;
+    position:absolute;
+    background:white;
     color:black;
+    padding:10px 14px;
+    border-radius:50px;
+    font-size:14px;
+    font-weight:bold;
 }
 
-.selecionado{
-    background:limegreen !important;
-    color:white !important;
-}
+/* POSIÇÕES */
 
-/* RODAPÉ */
+.gk{ bottom:20px; left:45%; }
 
-footer{
+.z1{ bottom:120px; left:20%; }
+.z2{ bottom:120px; left:70%; }
+
+.lat1{ bottom:200px; left:5%; }
+.lat2{ bottom:200px; right:5%; }
+
+.mc1{ bottom:300px; left:20%; }
+.mc2{ bottom:320px; left:45%; }
+.mc3{ bottom:300px; right:20%; }
+
+.at1{ top:180px; left:20%; }
+.at2{ top:120px; left:45%; }
+.at3{ top:180px; right:20%; }
+
+/* IA */
+
+.ia-box{
     text-align:center;
     padding:30px;
-    opacity:0.7;
+}
+
+.ia-result{
+    font-size:30px;
+    margin-top:20px;
+    color:yellow;
+    animation:pulse 1s infinite alternate;
+}
+
+@keyframes pulse{
+    from{
+        transform:scale(1);
+    }
+    to{
+        transform:scale(1.05);
+    }
 }
 
 </style>
 </head>
 <body>
 
-<header>
-    <h1>🏆 Copa World App ⚽</h1>
-    <p>Resultados • Palpites • Time Ideal</p>
-</header>
+<!-- MENU -->
 
-<div class="container">
+<nav>
 
-    <div class="cards">
+<button onclick="showPage('home')">🏠 Home</button>
 
-        <!-- RESULTADOS -->
+<button onclick="showPage('jogos')">⚽ Jogos</button>
 
-        <div class="card">
+<button onclick="showPage('palpites')">🎯 Palpites</button>
 
-            <h2>🔥 Jogos do Dia</h2>
+<button onclick="showPage('ia')">🤖 IA Copa</button>
 
-            <div class="jogo">
-                <span>🇧🇷 Brasil</span>
-                <span class="placar" id="placar">2 x 1</span>
-                <span>🇦🇷 Argentina</span>
-            </div>
+<button onclick="showPage('time')">⭐ Time Ideal</button>
 
-            <button onclick="mudarPlacar()">
-                Atualizar Resultado
-            </button>
+</nav>
 
-        </div>
+<!-- HOME -->
 
-        <!-- PALPITES -->
+<section id="home" class="page active">
 
-        <div class="card">
+<h1>🏆 Copa World 2026</h1>
 
-            <h2>🎯 Faça seu Palpite</h2>
+<div class="card">
 
-            <div class="jogo">
-                <span>🇫🇷 França</span>
-                <span>VS</span>
-                <span>🇩🇪 Alemanha</span>
-            </div>
+<h2>Bem-vindo!</h2>
 
-            <div style="display:flex; justify-content:space-between;">
-                <input type="number" id="time1" placeholder="0">
-                <input type="number" id="time2" placeholder="0">
-            </div>
-
-            <button onclick="enviarPalpite()">
-                Enviar Palpite
-            </button>
-
-            <p id="resultadoPalpite" style="margin-top:15px;"></p>
-
-        </div>
-
-        <!-- TIME IDEAL -->
-
-        <div class="card">
-
-            <h2>⭐ Monte seu Time Ideal</h2>
-
-            <div class="jogadores">
-
-                <div class="player">Neymar</div>
-                <div class="player">Messi</div>
-                <div class="player">Mbappé</div>
-                <div class="player">Vini Jr</div>
-                <div class="player">Haaland</div>
-                <div class="player">Bellingham</div>
-
-            </div>
-
-            <button style="margin-top:20px;" onclick="mostrarTime()">
-                Mostrar Seleção
-            </button>
-
-        </div>
-
-    </div>
+<p style="margin-top:15px;">
+O aplicativo definitivo da Copa do Mundo 🌍⚽
+</p>
 
 </div>
 
-<footer>
-    🌍 Copa World App 2026
-</footer>
+</section>
+
+<!-- JOGOS -->
+
+<section id="jogos" class="page">
+
+<h1>⚽ Jogos da Copa</h1>
+
+<div class="card">
+
+<div class="jogo">
+<div>
+<h3>🇧🇷 Brasil vs 🇦🇷 Argentina</h3>
+<p class="data">15 Junho 2026</p>
+</div>
+<h2>19:00</h2>
+</div>
+
+<div class="jogo">
+<div>
+<h3>🇫🇷 França vs 🇩🇪 Alemanha</h3>
+<p class="data">18 Junho 2026</p>
+</div>
+<h2>16:00</h2>
+</div>
+
+<div class="jogo">
+<div>
+<h3>🇪🇸 Espanha vs 🏴 Inglaterra</h3>
+<p class="data">21 Junho 2026</p>
+</div>
+<h2>21:00</h2>
+</div>
+
+</div>
+
+</section>
+
+<!-- PALPITES -->
+
+<section id="palpites" class="page">
+
+<h1>🎯 Faça seu Palpite</h1>
+
+<div class="card">
+
+<select id="jogoSelect">
+
+<option>Brasil vs Argentina</option>
+<option>França vs Alemanha</option>
+<option>Espanha vs Inglaterra</option>
+
+</select>
+
+<input type="number" placeholder="Gols Time 1" id="g1">
+
+<input type="number" placeholder="Gols Time 2" id="g2">
+
+<button class="btn" onclick="palpite()">
+Enviar Palpite
+</button>
+
+<p id="resultado" style="margin-top:20px;"></p>
+
+</div>
+
+</section>
+
+<!-- IA -->
+
+<section id="ia" class="page">
+
+<h1>🤖 IA Simuladora</h1>
+
+<div class="card ia-box">
+
+<h2>Clique para simular a Copa</h2>
+
+<button class="btn" onclick="simularCopa()">
+Simular Copa do Mundo
+</button>
+
+<div class="ia-result" id="campeao"></div>
+
+</div>
+
+</section>
+
+<!-- TIME -->
+
+<section id="time" class="page">
+
+<h1>⭐ Monte seu Time Ideal</h1>
+
+<div class="card">
+
+<p>Formação 4-3-3</p>
+
+<div class="campo">
+
+<div class="player gk">Alisson</div>
+
+<div class="player z1">Marquinhos</div>
+<div class="player z2">Rúben Dias</div>
+
+<div class="player lat1">Theo</div>
+<div class="player lat2">Hakimi</div>
+
+<div class="player mc1">Bellingham</div>
+<div class="player mc2">Rodri</div>
+<div class="player mc3">De Bruyne</div>
+
+<div class="player at1">Vini Jr</div>
+<div class="player at2">Mbappé</div>
+<div class="player at3">Messi</div>
+
+</div>
+
+</div>
+
+</section>
 
 <script>
 
-/* PLACAR */
+/* TROCAR PÁGINAS */
 
-function mudarPlacar(){
+function showPage(pageId){
 
-    let gols1 = Math.floor(Math.random()*5);
-    let gols2 = Math.floor(Math.random()*5);
+    let pages = document.querySelectorAll(".page");
 
-    document.getElementById("placar")
-    .innerHTML = gols1 + " x " + gols2;
+    pages.forEach(page => {
+        page.classList.remove("active");
+    });
+
+    document.getElementById(pageId)
+    .classList.add("active");
+
 }
 
 /* PALPITE */
 
-function enviarPalpite(){
+function palpite(){
 
-    let t1 = document.getElementById("time1").value;
-    let t2 = document.getElementById("time2").value;
+    let jogo =
+    document.getElementById("jogoSelect").value;
 
-    if(t1 === "" || t2 === ""){
+    let g1 =
+    document.getElementById("g1").value;
 
-        alert("Digite os placares!");
-        return;
-    }
+    let g2 =
+    document.getElementById("g2").value;
 
-    document.getElementById("resultadoPalpite")
+    document.getElementById("resultado")
     .innerHTML =
-    "🔥 Seu palpite foi: França "
-    + t1 +
+    "🔥 Seu palpite para " +
+    jogo +
+    " foi: " +
+    g1 +
     " x " +
-    t2 +
-    " Alemanha";
+    g2;
+
 }
 
-/* TIME IDEAL */
+/* IA */
 
-let jogadores = document.querySelectorAll(".player");
+function simularCopa(){
 
-jogadores.forEach(player => {
+    let times = [
+        "🇧🇷 Brasil",
+        "🇦🇷 Argentina",
+        "🇫🇷 França",
+        "🏴 Inglaterra",
+        "🇪🇸 Espanha",
+        "🇩🇪 Alemanha"
+    ];
 
-    player.addEventListener("click", ()=>{
+    let campeao =
+    times[Math.floor(Math.random()*times.length)];
 
-        player.classList.toggle("selecionado");
+    document.getElementById("campeao")
+    .innerHTML =
+    "🏆 Campeão previsto: <br>" +
+    campeao;
 
-    });
-
-});
-
-function mostrarTime(){
-
-    let selecionados = [];
-
-    jogadores.forEach(player => {
-
-        if(player.classList.contains("selecionado")){
-
-            selecionados.push(player.innerText);
-
-        }
-
-    });
-
-    if(selecionados.length == 0){
-
-        alert("Selecione jogadores!");
-    }
-
-    else{
-
-        alert("⭐ Seu time ideal:\n\n" + selecionados.join("\n"));
-
-    }
 }
 
 </script>
