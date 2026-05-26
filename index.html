@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Copa World App</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+    background:linear-gradient(135deg,#009739,#002776);
+    min-height:100vh;
+    color:white;
+    overflow-x:hidden;
+}
+
+/* TOPO */
+
+header{
+    padding:25px;
+    text-align:center;
+    background:rgba(0,0,0,0.2);
+    backdrop-filter:blur(10px);
+    box-shadow:0 5px 20px rgba(0,0,0,0.3);
+}
+
+header h1{
+    font-size:42px;
+    animation: brilho 2s infinite alternate;
+}
+
+header p{
+    margin-top:10px;
+    opacity:0.9;
+}
+
+@keyframes brilho{
+    from{
+        text-shadow:0 0 10px yellow;
+    }
+    to{
+        text-shadow:0 0 25px white;
+    }
+}
+
+/* CONTAINER */
+
+.container{
+    width:90%;
+    max-width:1200px;
+    margin:auto;
+    padding:30px 0;
+}
+
+/* CARDS */
+
+.cards{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:25px;
+}
+
+.card{
+    background:rgba(255,255,255,0.12);
+    border:1px solid rgba(255,255,255,0.2);
+    border-radius:25px;
+    padding:25px;
+    backdrop-filter:blur(12px);
+    transition:0.3s;
+    position:relative;
+    overflow:hidden;
+}
+
+.card:hover{
+    transform:translateY(-10px) scale(1.03);
+    box-shadow:0 10px 30px rgba(0,0,0,0.4);
+}
+
+.card::before{
+    content:'';
+    position:absolute;
+    width:180px;
+    height:180px;
+    background:rgba(255,255,255,0.08);
+    border-radius:50%;
+    top:-60px;
+    right:-60px;
+}
+
+/* JOGOS */
+
+.jogo{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin:20px 0;
+    font-size:22px;
+}
+
+.placar{
+    font-size:35px;
+    font-weight:bold;
+    color:yellow;
+}
+
+/* BOTÕES */
+
+button{
+    width:100%;
+    padding:14px;
+    border:none;
+    border-radius:15px;
+    background:yellow;
+    color:black;
+    font-weight:bold;
+    cursor:pointer;
+    transition:0.3s;
+    font-size:16px;
+}
+
+button:hover{
+    transform:scale(1.05);
+    background:white;
+}
+
+/* PALPITES */
+
+input{
+    width:48%;
+    padding:12px;
+    border:none;
+    border-radius:12px;
+    margin-top:10px;
+    font-size:18px;
+    text-align:center;
+}
+
+/* TIME IDEAL */
+
+.jogadores{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:10px;
+    margin-top:15px;
+}
+
+.player{
+    background:rgba(255,255,255,0.15);
+    padding:12px;
+    border-radius:12px;
+    cursor:pointer;
+    transition:0.3s;
+    text-align:center;
+}
+
+.player:hover{
+    background:yellow;
+    color:black;
+}
+
+.selecionado{
+    background:limegreen !important;
+    color:white !important;
+}
+
+/* RODAPÉ */
+
+footer{
+    text-align:center;
+    padding:30px;
+    opacity:0.7;
+}
+
+</style>
+</head>
+<body>
+
+<header>
+    <h1>🏆 Copa World App ⚽</h1>
+    <p>Resultados • Palpites • Time Ideal</p>
+</header>
+
+<div class="container">
+
+    <div class="cards">
+
+        <!-- RESULTADOS -->
+
+        <div class="card">
+
+            <h2>🔥 Jogos do Dia</h2>
+
+            <div class="jogo">
+                <span>🇧🇷 Brasil</span>
+                <span class="placar" id="placar">2 x 1</span>
+                <span>🇦🇷 Argentina</span>
+            </div>
+
+            <button onclick="mudarPlacar()">
+                Atualizar Resultado
+            </button>
+
+        </div>
+
+        <!-- PALPITES -->
+
+        <div class="card">
+
+            <h2>🎯 Faça seu Palpite</h2>
+
+            <div class="jogo">
+                <span>🇫🇷 França</span>
+                <span>VS</span>
+                <span>🇩🇪 Alemanha</span>
+            </div>
+
+            <div style="display:flex; justify-content:space-between;">
+                <input type="number" id="time1" placeholder="0">
+                <input type="number" id="time2" placeholder="0">
+            </div>
+
+            <button onclick="enviarPalpite()">
+                Enviar Palpite
+            </button>
+
+            <p id="resultadoPalpite" style="margin-top:15px;"></p>
+
+        </div>
+
+        <!-- TIME IDEAL -->
+
+        <div class="card">
+
+            <h2>⭐ Monte seu Time Ideal</h2>
+
+            <div class="jogadores">
+
+                <div class="player">Neymar</div>
+                <div class="player">Messi</div>
+                <div class="player">Mbappé</div>
+                <div class="player">Vini Jr</div>
+                <div class="player">Haaland</div>
+                <div class="player">Bellingham</div>
+
+            </div>
+
+            <button style="margin-top:20px;" onclick="mostrarTime()">
+                Mostrar Seleção
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+<footer>
+    🌍 Copa World App 2026
+</footer>
+
+<script>
+
+/* PLACAR */
+
+function mudarPlacar(){
+
+    let gols1 = Math.floor(Math.random()*5);
+    let gols2 = Math.floor(Math.random()*5);
+
+    document.getElementById("placar")
+    .innerHTML = gols1 + " x " + gols2;
+}
+
+/* PALPITE */
+
+function enviarPalpite(){
+
+    let t1 = document.getElementById("time1").value;
+    let t2 = document.getElementById("time2").value;
+
+    if(t1 === "" || t2 === ""){
+
+        alert("Digite os placares!");
+        return;
+    }
+
+    document.getElementById("resultadoPalpite")
+    .innerHTML =
+    "🔥 Seu palpite foi: França "
+    + t1 +
+    " x " +
+    t2 +
+    " Alemanha";
+}
+
+/* TIME IDEAL */
+
+let jogadores = document.querySelectorAll(".player");
+
+jogadores.forEach(player => {
+
+    player.addEventListener("click", ()=>{
+
+        player.classList.toggle("selecionado");
+
+    });
+
+});
+
+function mostrarTime(){
+
+    let selecionados = [];
+
+    jogadores.forEach(player => {
+
+        if(player.classList.contains("selecionado")){
+
+            selecionados.push(player.innerText);
+
+        }
+
+    });
+
+    if(selecionados.length == 0){
+
+        alert("Selecione jogadores!");
+    }
+
+    else{
+
+        alert("⭐ Seu time ideal:\n\n" + selecionados.join("\n"));
+
+    }
+}
+
+</script>
+
+</body>
+</html>
