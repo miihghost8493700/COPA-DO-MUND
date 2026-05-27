@@ -131,30 +131,279 @@ h1{
     0 10px 25px rgba(0,0,0,0.3);
 }
 
-/* JOGOS */
+/* JOGOS REAIS DA COPA */
 
-.jogo{
+const jogosCopa = [
 
-    display:flex;
+{
+grupo:"Grupo A",
+time1:"🇲🇽 México",
+time2:"🇿🇦 África do Sul",
+data:"11 Junho 2026",
+hora:"13:00"
+},
 
-    justify-content:space-between;
+{
+grupo:"Grupo A",
+time1:"🇰🇷 Coreia do Sul",
+time2:"🇨🇿 Tchéquia",
+data:"11 Junho 2026",
+hora:"20:00"
+},
 
-    align-items:center;
+{
+grupo:"Grupo B",
+time1:"🇨🇦 Canadá",
+time2:"🇧🇦 Bósnia",
+data:"12 Junho 2026",
+hora:"16:00"
+},
 
-    padding:20px;
+{
+grupo:"Grupo B",
+time1:"🇶🇦 Qatar",
+time2:"🇨🇭 Suíça",
+data:"12 Junho 2026",
+hora:"21:00"
+},
 
-    margin-top:15px;
+{
+grupo:"Grupo C",
+time1:"🇧🇷 Brasil",
+time2:"🇲🇦 Marrocos",
+data:"13 Junho 2026",
+hora:"21:00"
+},
 
-    border-radius:15px;
+{
+grupo:"Grupo C",
+time1:"🇭🇹 Haiti",
+time2:"🏴 Escócia",
+data:"13 Junho 2026",
+hora:"17:00"
+},
 
-    background:
-    rgba(255,255,255,0.08);
+{
+grupo:"Grupo D",
+time1:"🇺🇸 EUA",
+time2:"🇵🇾 Paraguai",
+data:"12 Junho 2026",
+hora:"21:00"
+},
+
+{
+grupo:"Grupo D",
+time1:"🇦🇺 Austrália",
+time2:"🇹🇷 Turquia",
+data:"13 Junho 2026",
+hora:"18:00"
+},
+
+{
+grupo:"Grupo E",
+time1:"🇩🇪 Alemanha",
+time2:"🇨🇼 Curaçao",
+data:"14 Junho 2026",
+hora:"18:00"
+},
+
+{
+grupo:"Grupo E",
+time1:"🇨🇮 Costa do Marfim",
+time2:"🇪🇨 Equador",
+data:"14 Junho 2026",
+hora:"15:00"
+},
+
+{
+grupo:"Grupo F",
+time1:"🇳🇱 Holanda",
+time2:"🇯🇵 Japão",
+data:"14 Junho 2026",
+hora:"21:00"
+},
+
+{
+grupo:"Grupo F",
+time1:"🇸🇪 Suécia",
+time2:"🇹🇳 Tunísia",
+data:"14 Junho 2026",
+hora:"18:00"
+},
+
+{
+grupo:"Grupo G",
+time1:"🇧🇪 Bélgica",
+time2:"🇪🇬 Egito",
+data:"15 Junho 2026",
+hora:"16:00"
+},
+
+{
+grupo:"Grupo G",
+time1:"🇮🇷 Irã",
+time2:"🇳🇿 Nova Zelândia",
+data:"15 Junho 2026",
+hora:"20:00"
+},
+
+{
+grupo:"Grupo H",
+time1:"🇪🇸 Espanha",
+time2:"🇨🇻 Cabo Verde",
+data:"15 Junho 2026",
+hora:"21:00"
+},
+
+{
+grupo:"Grupo H",
+time1:"🇸🇦 Arábia Saudita",
+time2:"🇺🇾 Uruguai",
+data:"15 Junho 2026",
+hora:"17:00"
+},
+
+{
+grupo:"Grupo I",
+time1:"🇫🇷 França",
+time2:"🇸🇳 Senegal",
+data:"16 Junho 2026",
+hora:"16:00"
+},
+
+{
+grupo:"Grupo I",
+time1:"🇮🇶 Iraque",
+time2:"🇳🇴 Noruega",
+data:"16 Junho 2026",
+hora:"20:00"
+},
+
+{
+grupo:"Grupo J",
+time1:"🇦🇷 Argentina",
+time2:"🇩🇿 Argélia",
+data:"16 Junho 2026",
+hora:"21:00"
+},
+
+{
+grupo:"Grupo J",
+time1:"🇦🇹 Áustria",
+time2:"🇯🇴 Jordânia",
+data:"16 Junho 2026",
+hora:"18:00"
+},
+
+{
+grupo:"Grupo K",
+time1:"🇵🇹 Portugal",
+time2:"🇨🇩 Congo",
+data:"17 Junho 2026",
+hora:"17:00"
+},
+
+{
+grupo:"Grupo K",
+time1:"🇺🇿 Uzbequistão",
+time2:"🇨🇴 Colômbia",
+data:"17 Junho 2026",
+hora:"21:00"
+},
+
+{
+grupo:"Grupo L",
+time1:"🏴 Inglaterra",
+time2:"🇭🇷 Croácia",
+data:"17 Junho 2026",
+hora:"18:00"
+},
+
+{
+grupo:"Grupo L",
+time1:"🇬🇭 Gana",
+time2:"🇵🇦 Panamá",
+data:"17 Junho 2026",
+hora:"22:00"
 }
 
-.data{
-    color:yellow;
-    font-size:14px;
+];
+
+/* MOSTRAR JOGOS */
+
+function carregarJogos(){
+
+    let lista =
+    document.getElementById("listaJogos");
+
+    lista.innerHTML = "";
+
+    jogosCopa.forEach(jogo => {
+
+        lista.innerHTML += `
+
+        <div class="jogo">
+
+            <div>
+
+                <h3>
+                ${jogo.time1}
+                vs
+                ${jogo.time2}
+                </h3>
+
+                <p class="data">
+                ${jogo.grupo}
+                •
+                ${jogo.data}
+                </p>
+
+            </div>
+
+            <h2>
+            ${jogo.hora}
+            </h2>
+
+        </div>
+
+        `;
+
+    });
+
 }
+
+/* AUTO UPDATE FUTURO */
+
+async function atualizarJogosAutomaticamente(){
+
+    /*
+    FUTURAMENTE:
+
+    const response =
+    await fetch("API_DA_COPA");
+
+    const data =
+    await response.json();
+
+    jogosCopa = data;
+
+    carregarJogos();
+    */
+
+    console.log(
+        "🛰️ Sistema preparado para atualização automática."
+    );
+
+}
+
+/* INICIAR */
+
+carregarJogos();
+
+setInterval(
+    atualizarJogosAutomaticamente,
+    60000
+);
 
 /* INPUTS */
 
