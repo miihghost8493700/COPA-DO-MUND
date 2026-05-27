@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
 
 <meta charset="UTF-8">
@@ -104,7 +105,7 @@ nav button:hover{
 
 }
 
-/* TÍTULOS */
+/* TITULOS */
 
 h1{
     margin-bottom:20px;
@@ -434,7 +435,7 @@ select{
     display:grid;
 
     grid-template-columns:
-    repeat(auto-fit,minmax(200px,1fr));
+    repeat(auto-fit,minmax(180px,1fr));
 
     gap:15px;
 
@@ -455,6 +456,8 @@ select{
     transition:0.3s;
 
     text-align:center;
+
+    font-weight:bold;
 }
 
 .selecao:hover{
@@ -465,11 +468,11 @@ select{
     rgba(255,255,255,0.2);
 }
 
-/* ESCALAÇÃO */
+/* ELENCO */
 
 .escalacao{
 
-    margin-top:25px;
+    margin-top:30px;
 
     line-height:2;
 }
@@ -490,6 +493,10 @@ select{
     .jogador input{
         width:55px;
         font-size:10px;
+    }
+
+    h1{
+        font-size:30px;
     }
 
 }
@@ -538,11 +545,11 @@ select{
 
 <div class="card">
 
-<h2>Bem-vindo ao aplicativo da Copa!</h2>
+<h2>Bem-vindo ao App da Copa!</h2>
 
 <p style="margin-top:15px;">
-Resultados, palpites, IA,
-times e escalações completas ⚽🔥
+Acompanhe jogos, simule resultados,
+monte times e explore seleções ⚽🔥
 </p>
 
 </div>
@@ -596,9 +603,7 @@ times e escalações completas ⚽🔥
 <select id="jogoSelect">
 
 <option>Brasil vs Argentina</option>
-
 <option>França vs Alemanha</option>
-
 <option>Espanha vs Inglaterra</option>
 
 </select>
@@ -643,19 +648,14 @@ Simular Copa
 
 <div class="card">
 
-<select id="formacao" onchange="mudarFormacao()">
+<select id="formacao">
 
-<option value="433">4-3-3</option>
-
-<option value="442">4-4-2</option>
-
-<option value="352">3-5-2</option>
-
-<option value="343">3-4-3</option>
-
-<option value="451">4-5-1</option>
-
-<option value="541">5-4-1</option>
+<option>4-3-3</option>
+<option>4-4-2</option>
+<option>3-5-2</option>
+<option>3-4-3</option>
+<option>4-5-1</option>
+<option>5-4-1</option>
 
 </select>
 
@@ -669,8 +669,6 @@ Simular Copa
 
 <div class="area area-bottom"></div>
 
-<!-- JOGADORES -->
-
 <div class="jogador gk">
 <input value="Alisson">
 </div>
@@ -680,11 +678,11 @@ Simular Copa
 </div>
 
 <div class="jogador z2">
-<input value="Rúben Dias">
+<input value="Militão">
 </div>
 
 <div class="jogador lat1">
-<input value="Theo">
+<input value="Arana">
 </div>
 
 <div class="jogador lat2">
@@ -692,11 +690,11 @@ Simular Copa
 </div>
 
 <div class="jogador mc1">
-<input value="Bellingham">
+<input value="Rodri">
 </div>
 
 <div class="jogador mc2">
-<input value="Rodri">
+<input value="Bellingham">
 </div>
 
 <div class="jogador mc3">
@@ -745,40 +743,40 @@ Simular Copa
 🇫🇷 França
 </div>
 
-<div class="selecao" onclick="mostrarSelecao('Inglaterra')">
-🏴 Inglaterra
+<div class="selecao" onclick="mostrarSelecao('Alemanha')">
+🇩🇪 Alemanha
 </div>
 
 <div class="selecao" onclick="mostrarSelecao('Espanha')">
 🇪🇸 Espanha
 </div>
 
-<div class="selecao" onclick="mostrarSelecao('Alemanha')">
-🇩🇪 Alemanha
-</div>
-
-<div class="selecao">
+<div class="selecao" onclick="mostrarSelecao('Portugal')">
 🇵🇹 Portugal
 </div>
 
-<div class="selecao">
+<div class="selecao" onclick="mostrarSelecao('Inglaterra')">
+🏴 Inglaterra
+</div>
+
+<div class="selecao" onclick="mostrarSelecao('Holanda')">
 🇳🇱 Holanda
 </div>
 
-<div class="selecao">
-🇺🇸 EUA
+<div class="selecao" onclick="mostrarSelecao('Uruguai')">
+🇺🇾 Uruguai
 </div>
 
-<div class="selecao">
-🇲🇽 México
+<div class="selecao" onclick="mostrarSelecao('Croacia')">
+🇭🇷 Croácia
 </div>
 
-<div class="selecao">
+<div class="selecao" onclick="mostrarSelecao('Marrocos')">
+🇲🇦 Marrocos
+</div>
+
+<div class="selecao" onclick="mostrarSelecao('Japao')">
 🇯🇵 Japão
-</div>
-
-<div class="selecao">
-🇰🇷 Coreia do Sul
 </div>
 
 </div>
@@ -799,15 +797,12 @@ function showPage(pageId){
     document.querySelectorAll(".page");
 
     pages.forEach(page => {
-
         page.classList.remove("active");
-
     });
 
     document
     .getElementById(pageId)
     .classList.add("active");
-
 }
 
 /* PALPITES */
@@ -833,7 +828,6 @@ function palpite(){
     + g1 +
     " x "
     + g2;
-
 }
 
 /* IA */
@@ -845,14 +839,13 @@ function simularCopa(){
         "🇧🇷 Brasil",
         "🇦🇷 Argentina",
         "🇫🇷 França",
-        "🏴 Inglaterra",
+        "🇩🇪 Alemanha",
         "🇪🇸 Espanha",
-        "🇩🇪 Alemanha"
+        "🏴 Inglaterra"
 
     ];
 
     let campeao =
-
     times[
         Math.floor(
             Math.random()*times.length
@@ -865,21 +858,6 @@ function simularCopa(){
 
     "🏆 Campeão previsto:<br><br>"
     + campeao;
-
-}
-
-/* FORMAÇÕES */
-
-function mudarFormacao(){
-
-    let formacao =
-    document.getElementById("formacao").value;
-
-    alert(
-        "🔥 Formação alterada para "
-        + formacao
-    );
-
 }
 
 /* DRAG */
@@ -908,7 +886,6 @@ jogadores.forEach(jogador => {
 
             jogador.style.top =
             pageY - shiftY + 'px';
-
         }
 
         moveAt(
@@ -922,7 +899,6 @@ jogadores.forEach(jogador => {
                 event.pageX,
                 event.pageY
             );
-
         }
 
         document.addEventListener(
@@ -938,114 +914,157 @@ jogadores.forEach(jogador => {
             );
 
             jogador.onmouseup = null;
-
         };
-
     };
 
     jogador.ondragstart = function(){
         return false;
     };
-
 });
 
 /* SELEÇÕES */
+
+const selecoes = {
+
+Brasil: {
+
+formacao:"4-3-3",
+
+jogadores:[
+
+"🧤 Alisson",
+"🧤 Bento",
+"🛡️ Marquinhos",
+"🛡️ Militão",
+"🛡️ Bremer",
+"🛡️ Danilo",
+"🛡️ Arana",
+"🎯 Casemiro",
+"🎯 Bruno Guimarães",
+"🎯 Paquetá",
+"🎯 Andreas Pereira",
+"🔥 Vini Jr",
+"🔥 Rodrygo",
+"🔥 Endrick",
+"🔥 Martinelli"
+
+]
+
+},
+
+Argentina: {
+
+formacao:"4-4-2",
+
+jogadores:[
+
+"🧤 Emiliano Martínez",
+"🛡️ Romero",
+"🛡️ Otamendi",
+"🎯 Enzo Fernández",
+"🎯 De Paul",
+"🔥 Messi",
+"🔥 Julián Álvarez",
+"🔥 Lautaro Martínez"
+
+]
+
+},
+
+França: {
+
+formacao:"4-3-3",
+
+jogadores:[
+
+"🧤 Maignan",
+"🛡️ Saliba",
+"🛡️ Koundé",
+"🛡️ Theo Hernández",
+"🎯 Camavinga",
+"🎯 Tchouaméni",
+"🎯 Griezmann",
+"🔥 Mbappé",
+"🔥 Dembélé"
+
+]
+
+},
+
+Alemanha: {
+
+formacao:"4-2-3-1",
+
+jogadores:[
+
+"🧤 Ter Stegen",
+"🛡️ Rüdiger",
+"🛡️ Tah",
+"🎯 Musiala",
+"🎯 Gündogan",
+"🔥 Havertz",
+"🔥 Sané"
+
+]
+
+},
+
+Portugal: {
+
+formacao:"4-3-3",
+
+jogadores:[
+
+"🧤 Diogo Costa",
+"🛡️ Rúben Dias",
+"🛡️ João Cancelo",
+"🎯 Bernardo Silva",
+"🎯 Bruno Fernandes",
+"🔥 Cristiano Ronaldo",
+"🔥 Rafael Leão"
+
+]
+
+}
+
+};
+
+/* MOSTRAR */
 
 function mostrarSelecao(time){
 
     let escalacao =
     document.getElementById("escalacao");
 
-    if(time == "Brasil"){
+    let selecao =
+    selecoes[time];
+
+    if(!selecao){
 
         escalacao.innerHTML =
+        "<h2>🌎 " +
+        time +
+        "</h2><br>Convocados ainda não adicionados.";
 
-        "<h2>🇧🇷 Brasil</h2>" +
-
-        "<br>⚽ Formação: 4-3-3" +
-
-        "<br><br>🧤 Alisson" +
-
-        "<br>🛡️ Marquinhos" +
-
-        "<br>🛡️ Militão" +
-
-        "<br>🏃 Danilo" +
-
-        "<br>🏃 Arana" +
-
-        "<br>🎯 Bruno Guimarães" +
-
-        "<br>🎯 Paquetá" +
-
-        "<br>🎯 Casemiro" +
-
-        "<br>🔥 Vini Jr" +
-
-        "<br>🔥 Rodrygo" +
-
-        "<br>🔥 Endrick";
-
+        return;
     }
 
-    else if(time == "Argentina"){
+    let html =
 
-        escalacao.innerHTML =
+    "<h2>🌎 " + time + "</h2>" +
 
-        "<h2>🇦🇷 Argentina</h2>" +
+    "<br><strong>⚽ Formação:</strong> "
+    + selecao.formacao +
 
-        "<br>⚽ Formação: 4-4-2" +
+    "<br><br>";
 
-        "<br><br>🧤 Emiliano Martínez" +
+    selecao.jogadores.forEach(jogador => {
 
-        "<br>🛡️ Romero" +
+        html += jogador + "<br>";
 
-        "<br>🛡️ Otamendi" +
+    });
 
-        "<br>🎯 De Paul" +
-
-        "<br>🎯 Enzo Fernández" +
-
-        "<br>🔥 Messi" +
-
-        "<br>🔥 Julián Álvarez";
-
-    }
-
-    else if(time == "França"){
-
-        escalacao.innerHTML =
-
-        "<h2>🇫🇷 França</h2>" +
-
-        "<br>⚽ Formação: 4-3-3" +
-
-        "<br><br>🧤 Maignan" +
-
-        "<br>🛡️ Saliba" +
-
-        "<br>🛡️ Koundé" +
-
-        "<br>🎯 Camavinga" +
-
-        "<br>🎯 Tchouaméni" +
-
-        "<br>🔥 Mbappé" +
-
-        "<br>🔥 Dembélé";
-
-    }
-
-    else{
-
-        escalacao.innerHTML =
-
-        "<h2>🌎 " + time + "</h2>" +
-
-        "<br><br>🔥 Escalação será adicionada em breve.";
-
-    }
-
+    escalacao.innerHTML = html;
 }
 
 </script>
