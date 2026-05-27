@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -8,15 +10,23 @@
 
 <style>
 
+/* RESET */
+
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family:Arial;
+    font-family:Arial, Helvetica, sans-serif;
 }
 
 body{
-    background:linear-gradient(135deg,#009739,#001f5c);
+    background:
+    linear-gradient(
+        135deg,
+        #009739,
+        #001f5c
+    );
+
     color:white;
     min-height:100vh;
     overflow-x:hidden;
@@ -26,26 +36,28 @@ body{
 
 nav{
     width:100%;
-    background:rgba(0,0,0,0.3);
     padding:20px;
     display:flex;
     justify-content:center;
     gap:15px;
     flex-wrap:wrap;
+
+    background:rgba(0,0,0,0.3);
+
     backdrop-filter:blur(10px);
+
     position:sticky;
     top:0;
     z-index:999;
 }
 
 nav button{
-    padding:12px 20px;
+    padding:12px 22px;
     border:none;
     border-radius:15px;
     cursor:pointer;
-    background:yellow;
-    color:black;
     font-weight:bold;
+    background:yellow;
     transition:0.3s;
 }
 
@@ -66,30 +78,42 @@ nav button:hover{
 }
 
 @keyframes fade{
+
     from{
         opacity:0;
         transform:translateY(20px);
     }
+
     to{
         opacity:1;
         transform:translateY(0);
     }
+
 }
 
 /* TÍTULOS */
 
 h1{
+    font-size:42px;
     margin-bottom:20px;
-    font-size:40px;
 }
 
+/* CARDS */
+
 .card{
-    background:rgba(255,255,255,0.12);
-    padding:25px;
-    border-radius:25px;
     margin-top:20px;
+
+    background:
+    rgba(255,255,255,0.12);
+
+    padding:25px;
+
+    border-radius:25px;
+
     backdrop-filter:blur(12px);
-    box-shadow:0 10px 25px rgba(0,0,0,0.3);
+
+    box-shadow:
+    0 10px 25px rgba(0,0,0,0.3);
 }
 
 /* JOGOS */
@@ -98,10 +122,14 @@ h1{
     display:flex;
     justify-content:space-between;
     align-items:center;
+
     padding:20px;
     margin-top:15px;
-    background:rgba(255,255,255,0.08);
+
     border-radius:15px;
+
+    background:
+    rgba(255,255,255,0.08);
 }
 
 .data{
@@ -111,74 +139,40 @@ h1{
 
 /* INPUTS */
 
-input, select{
+input,
+select{
     width:100%;
     padding:12px;
     margin-top:12px;
+
     border:none;
     border-radius:10px;
+
     font-size:16px;
 }
 
 /* BOTÕES */
 
 .btn{
-    margin-top:15px;
     width:100%;
     padding:14px;
+    margin-top:15px;
+
     border:none;
     border-radius:12px;
+
     background:yellow;
+
     font-weight:bold;
+
     cursor:pointer;
+
     transition:0.3s;
 }
 
 .btn:hover{
     transform:scale(1.03);
 }
-
-/* CAMPO */
-
-.campo{
-    margin-top:25px;
-    background:green;
-    border-radius:20px;
-    padding:30px;
-    position:relative;
-    height:700px;
-    border:5px solid white;
-}
-
-/* JOGADORES */
-
-.player{
-    position:absolute;
-    background:white;
-    color:black;
-    padding:10px 14px;
-    border-radius:50px;
-    font-size:14px;
-    font-weight:bold;
-}
-
-/* POSIÇÕES */
-
-.gk{ bottom:20px; left:45%; }
-
-.z1{ bottom:120px; left:20%; }
-.z2{ bottom:120px; left:70%; }
-
-.lat1{ bottom:200px; left:5%; }
-.lat2{ bottom:200px; right:5%; }
-
-.mc1{ bottom:300px; left:20%; }
-.mc2{ bottom:320px; left:45%; }
-.mc3{ bottom:300px; right:20%; }
-
-.at1{ top:180px; left:20%; }
-.at2{ top:120px; left:45%; }
-.at3{ top:180px; right:20%; }
 
 /* IA */
 
@@ -188,38 +182,295 @@ input, select{
 }
 
 .ia-result{
-    font-size:30px;
-    margin-top:20px;
+    margin-top:25px;
+    font-size:32px;
     color:yellow;
+
     animation:pulse 1s infinite alternate;
 }
 
 @keyframes pulse{
+
     from{
         transform:scale(1);
     }
+
     to{
         transform:scale(1.05);
     }
+
+}
+
+/* CAMPO */
+
+.campo{
+
+    margin-top:30px;
+
+    position:relative;
+
+    width:100%;
+    height:850px;
+
+    border-radius:30px;
+
+    overflow:hidden;
+
+    background:
+    linear-gradient(
+        0deg,
+        #1b8f3b,
+        #29a14a
+    );
+
+    border:6px solid white;
+
+    box-shadow:
+    inset 0 0 50px rgba(0,0,0,0.4),
+    0 0 30px rgba(0,0,0,0.5);
+}
+
+/* EFEITO GRAMADO */
+
+.campo::before{
+
+    content:'';
+
+    position:absolute;
+
+    width:100%;
+    height:100%;
+
+    background:
+    repeating-linear-gradient(
+        90deg,
+        rgba(255,255,255,0.03) 0px,
+        rgba(255,255,255,0.03) 80px,
+        transparent 80px,
+        transparent 160px
+    );
+}
+
+/* LINHAS */
+
+.linha-meio{
+
+    position:absolute;
+
+    width:100%;
+    height:4px;
+
+    background:white;
+
+    top:50%;
+
+    transform:translateY(-50%);
+}
+
+.circulo{
+
+    position:absolute;
+
+    width:140px;
+    height:140px;
+
+    border:4px solid white;
+
+    border-radius:50%;
+
+    top:50%;
+    left:50%;
+
+    transform:translate(-50%,-50%);
+}
+
+.area{
+
+    position:absolute;
+
+    width:300px;
+    height:120px;
+
+    border:4px solid white;
+
+    left:50%;
+
+    transform:translateX(-50%);
+}
+
+.area-top{
+    top:0;
+    border-top:none;
+}
+
+.area-bottom{
+    bottom:0;
+    border-bottom:none;
+}
+
+/* JOGADORES */
+
+.jogador{
+
+    position:absolute;
+
+    width:95px;
+    height:95px;
+
+    border-radius:20px;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    background:
+    linear-gradient(
+        135deg,
+        white,
+        #d9d9d9
+    );
+
+    box-shadow:
+    0 5px 15px rgba(0,0,0,0.4);
+
+    transition:0.3s;
+}
+
+.jogador:hover{
+    transform:scale(1.08);
+}
+
+/* INPUTS JOGADORES */
+
+.jogador input{
+
+    width:80px;
+
+    background:transparent;
+
+    border:none;
+
+    text-align:center;
+
+    font-size:13px;
+    font-weight:bold;
+
+    color:black;
+}
+
+/* POSIÇÕES */
+
+.gk{
+    bottom:20px;
+    left:50%;
+    transform:translateX(-50%);
+}
+
+.z1{
+    bottom:170px;
+    left:25%;
+}
+
+.z2{
+    bottom:170px;
+    right:25%;
+}
+
+.lat1{
+    bottom:230px;
+    left:5%;
+}
+
+.lat2{
+    bottom:230px;
+    right:5%;
+}
+
+.mc1{
+    bottom:390px;
+    left:20%;
+}
+
+.mc2{
+    bottom:430px;
+    left:50%;
+    transform:translateX(-50%);
+}
+
+.mc3{
+    bottom:390px;
+    right:20%;
+}
+
+.at1{
+    top:160px;
+    left:15%;
+}
+
+.at2{
+    top:80px;
+    left:50%;
+    transform:translateX(-50%);
+}
+
+.at3{
+    top:160px;
+    right:15%;
+}
+
+/* RESPONSIVO */
+
+@media(max-width:768px){
+
+    .campo{
+        height:700px;
+    }
+
+    .jogador{
+        width:70px;
+        height:70px;
+    }
+
+    .jogador input{
+        width:60px;
+        font-size:10px;
+    }
+
+    h1{
+        font-size:30px;
+    }
+
 }
 
 </style>
+
 </head>
+
 <body>
 
 <!-- MENU -->
 
 <nav>
 
-<button onclick="showPage('home')">🏠 Home</button>
+<button onclick="showPage('home')">
+🏠 Home
+</button>
 
-<button onclick="showPage('jogos')">⚽ Jogos</button>
+<button onclick="showPage('jogos')">
+⚽ Jogos
+</button>
 
-<button onclick="showPage('palpites')">🎯 Palpites</button>
+<button onclick="showPage('palpites')">
+🎯 Palpites
+</button>
 
-<button onclick="showPage('ia')">🤖 IA Copa</button>
+<button onclick="showPage('ia')">
+🤖 IA Copa
+</button>
 
-<button onclick="showPage('time')">⭐ Time Ideal</button>
+<button onclick="showPage('time')">
+⭐ Time Ideal
+</button>
 
 </nav>
 
@@ -231,10 +482,11 @@ input, select{
 
 <div class="card">
 
-<h2>Bem-vindo!</h2>
+<h2>Bem-vindo ao App da Copa!</h2>
 
 <p style="margin-top:15px;">
-O aplicativo definitivo da Copa do Mundo 🌍⚽
+Acompanhe jogos, faça palpites,
+simule a Copa e monte seu time ideal ⚽🔥
 </p>
 
 </div>
@@ -250,27 +502,36 @@ O aplicativo definitivo da Copa do Mundo 🌍⚽
 <div class="card">
 
 <div class="jogo">
+
 <div>
 <h3>🇧🇷 Brasil vs 🇦🇷 Argentina</h3>
 <p class="data">15 Junho 2026</p>
 </div>
+
 <h2>19:00</h2>
+
 </div>
 
 <div class="jogo">
+
 <div>
 <h3>🇫🇷 França vs 🇩🇪 Alemanha</h3>
 <p class="data">18 Junho 2026</p>
 </div>
+
 <h2>16:00</h2>
+
 </div>
 
 <div class="jogo">
+
 <div>
 <h3>🇪🇸 Espanha vs 🏴 Inglaterra</h3>
 <p class="data">21 Junho 2026</p>
 </div>
+
 <h2>21:00</h2>
+
 </div>
 
 </div>
@@ -288,17 +549,27 @@ O aplicativo definitivo da Copa do Mundo 🌍⚽
 <select id="jogoSelect">
 
 <option>Brasil vs Argentina</option>
+
 <option>França vs Alemanha</option>
+
 <option>Espanha vs Inglaterra</option>
 
 </select>
 
-<input type="number" placeholder="Gols Time 1" id="g1">
+<input
+type="number"
+placeholder="Gols Time 1"
+id="g1">
 
-<input type="number" placeholder="Gols Time 2" id="g2">
+<input
+type="number"
+placeholder="Gols Time 2"
+id="g2">
 
 <button class="btn" onclick="palpite()">
+
 Enviar Palpite
+
 </button>
 
 <p id="resultado" style="margin-top:20px;"></p>
@@ -315,10 +586,14 @@ Enviar Palpite
 
 <div class="card ia-box">
 
-<h2>Clique para simular a Copa</h2>
+<h2>
+Clique para simular a Copa do Mundo
+</h2>
 
 <button class="btn" onclick="simularCopa()">
-Simular Copa do Mundo
+
+Simular Copa
+
 </button>
 
 <div class="ia-result" id="campeao"></div>
@@ -327,7 +602,7 @@ Simular Copa do Mundo
 
 </section>
 
-<!-- TIME -->
+<!-- TIME IDEAL -->
 
 <section id="time" class="page">
 
@@ -335,25 +610,73 @@ Simular Copa do Mundo
 
 <div class="card">
 
-<p>Formação 4-3-3</p>
+<select id="formacao" onchange="mudarFormacao()">
+
+<option value="433">4-3-3</option>
+
+<option value="442">4-4-2</option>
+
+<option value="352">3-5-2</option>
+
+</select>
 
 <div class="campo">
 
-<div class="player gk">Alisson</div>
+<!-- LINHAS -->
 
-<div class="player z1">Marquinhos</div>
-<div class="player z2">Rúben Dias</div>
+<div class="linha-meio"></div>
 
-<div class="player lat1">Theo</div>
-<div class="player lat2">Hakimi</div>
+<div class="circulo"></div>
 
-<div class="player mc1">Bellingham</div>
-<div class="player mc2">Rodri</div>
-<div class="player mc3">De Bruyne</div>
+<div class="area area-top"></div>
 
-<div class="player at1">Vini Jr</div>
-<div class="player at2">Mbappé</div>
-<div class="player at3">Messi</div>
+<div class="area area-bottom"></div>
+
+<!-- JOGADORES -->
+
+<div class="jogador gk">
+<input value="Alisson">
+</div>
+
+<div class="jogador z1">
+<input value="Marquinhos">
+</div>
+
+<div class="jogador z2">
+<input value="Rúben Dias">
+</div>
+
+<div class="jogador lat1">
+<input value="Theo">
+</div>
+
+<div class="jogador lat2">
+<input value="Hakimi">
+</div>
+
+<div class="jogador mc1">
+<input value="Bellingham">
+</div>
+
+<div class="jogador mc2">
+<input value="Rodri">
+</div>
+
+<div class="jogador mc3">
+<input value="De Bruyne">
+</div>
+
+<div class="jogador at1">
+<input value="Vini Jr">
+</div>
+
+<div class="jogador at2">
+<input value="Mbappé">
+</div>
+
+<div class="jogador at3">
+<input value="Messi">
+</div>
 
 </div>
 
@@ -367,18 +690,22 @@ Simular Copa do Mundo
 
 function showPage(pageId){
 
-    let pages = document.querySelectorAll(".page");
+    let pages =
+    document.querySelectorAll(".page");
 
     pages.forEach(page => {
+
         page.classList.remove("active");
+
     });
 
-    document.getElementById(pageId)
+    document
+    .getElementById(pageId)
     .classList.add("active");
 
 }
 
-/* PALPITE */
+/* PALPITES */
 
 function palpite(){
 
@@ -391,14 +718,16 @@ function palpite(){
     let g2 =
     document.getElementById("g2").value;
 
-    document.getElementById("resultado")
+    document
+    .getElementById("resultado")
     .innerHTML =
-    "🔥 Seu palpite para " +
-    jogo +
-    " foi: " +
-    g1 +
-    " x " +
-    g2;
+
+    "🔥 Seu palpite para "
+    + jogo +
+    " foi: "
+    + g1 +
+    " x "
+    + g2;
 
 }
 
@@ -407,21 +736,90 @@ function palpite(){
 function simularCopa(){
 
     let times = [
+
         "🇧🇷 Brasil",
         "🇦🇷 Argentina",
         "🇫🇷 França",
         "🏴 Inglaterra",
         "🇪🇸 Espanha",
         "🇩🇪 Alemanha"
+
     ];
 
     let campeao =
-    times[Math.floor(Math.random()*times.length)];
 
-    document.getElementById("campeao")
+    times[
+        Math.floor(
+            Math.random()*times.length
+        )
+    ];
+
+    document
+    .getElementById("campeao")
     .innerHTML =
-    "🏆 Campeão previsto: <br>" +
-    campeao;
+
+    "🏆 Campeão previsto:<br><br>"
+    + campeao;
+
+}
+
+/* FORMAÇÕES */
+
+function mudarFormacao(){
+
+    let formacao =
+    document.getElementById("formacao").value;
+
+    if(formacao == "442"){
+
+        document.querySelector(".mc2")
+        .style.bottom = "350px";
+
+        document.querySelector(".at1")
+        .style.top = "120px";
+
+        document.querySelector(".at2")
+        .style.top = "120px";
+
+        document.querySelector(".at3")
+        .style.display = "none";
+
+    }
+
+    else if(formacao == "352"){
+
+        document.querySelector(".lat1")
+        .style.display = "none";
+
+        document.querySelector(".lat2")
+        .style.display = "none";
+
+        document.querySelector(".mc1")
+        .style.left = "10%";
+
+        document.querySelector(".mc3")
+        .style.right = "10%";
+
+        document.querySelector(".at3")
+        .style.display = "flex";
+
+    }
+
+    else{
+
+        document.querySelector(".lat1")
+        .style.display = "flex";
+
+        document.querySelector(".lat2")
+        .style.display = "flex";
+
+        document.querySelector(".at3")
+        .style.display = "flex";
+
+        document.querySelector(".mc2")
+        .style.bottom = "430px";
+
+    }
 
 }
 
