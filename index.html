@@ -6,84 +6,136 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Copa World 2026</title>
+<title>Copa World 2026 Ultimate</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
 
 <style>
 
-/* RESET */
+/* =========================
+RESET
+========================= */
 
 *{
+
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family:Arial, Helvetica, sans-serif;
 }
 
 body{
+
+    font-family:'Poppins',sans-serif;
+
     background:
     linear-gradient(
         135deg,
-        #009739,
-        #001f5c
+        #021b34,
+        #013220,
+        #000814
     );
 
     color:white;
+
     overflow-x:hidden;
 }
 
-/* MENU */
+/* =========================
+SCROLLBAR
+========================= */
+
+::-webkit-scrollbar{
+    width:10px;
+}
+
+::-webkit-scrollbar-thumb{
+    background:#ffe600;
+    border-radius:20px;
+}
+
+/* =========================
+MENU
+========================= */
 
 nav{
 
     width:100%;
 
-    padding:20px;
-
     display:flex;
 
     justify-content:center;
 
-    gap:15px;
+    align-items:center;
 
     flex-wrap:wrap;
 
-    background:rgba(0,0,0,0.3);
+    gap:15px;
 
-    backdrop-filter:blur(10px);
+    padding:20px;
 
     position:sticky;
 
     top:0;
 
     z-index:999;
+
+    backdrop-filter:blur(15px);
+
+    background:
+    rgba(0,0,0,0.35);
+
+    border-bottom:
+    1px solid rgba(255,255,255,0.1);
 }
 
 nav button{
 
-    padding:12px 20px;
-
     border:none;
 
-    border-radius:15px;
+    padding:12px 20px;
+
+    border-radius:14px;
 
     cursor:pointer;
 
-    background:yellow;
+    background:
+    linear-gradient(
+        135deg,
+        #ffe600,
+        #ffbf00
+    );
 
-    font-weight:bold;
+    color:black;
+
+    font-weight:700;
 
     transition:0.3s;
 }
 
 nav button:hover{
-    transform:scale(1.08);
+
+    transform:
+    translateY(-3px)
+    scale(1.05);
+
+    box-shadow:
+    0 10px 25px rgba(255,230,0,0.3);
 }
 
-/* PÁGINAS */
+/* =========================
+PAGES
+========================= */
 
 .page{
+
     display:none;
+
     padding:40px;
+
     animation:fade 0.5s;
 }
 
@@ -102,38 +154,138 @@ nav button:hover{
         opacity:1;
         transform:translateY(0);
     }
-
 }
 
-/* TITULOS */
+/* =========================
+HEADINGS
+========================= */
 
 h1{
+
+    font-size:50px;
+
     margin-bottom:20px;
-    font-size:42px;
+
+    font-weight:800;
 }
 
-/* CARDS */
+h2{
+    font-weight:700;
+}
+
+/* =========================
+CARDS
+========================= */
 
 .card{
 
-    margin-top:20px;
+    margin-top:25px;
 
-    padding:25px;
+    padding:30px;
 
-    border-radius:25px;
+    border-radius:28px;
 
     background:
-    rgba(255,255,255,0.12);
+    rgba(255,255,255,0.08);
 
-    backdrop-filter:blur(12px);
+    backdrop-filter:blur(14px);
+
+    border:
+    1px solid rgba(255,255,255,0.08);
 
     box-shadow:
-    0 10px 25px rgba(0,0,0,0.3);
+    0 10px 35px rgba(0,0,0,0.4);
 }
 
-/* JOGOS */
+/* =========================
+HOME
+========================= */
+
+.hero{
+
+    width:100%;
+
+    min-height:400px;
+
+    border-radius:30px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    flex-direction:column;
+
+    text-align:center;
+
+    background:
+    linear-gradient(
+        135deg,
+        rgba(0,255,100,0.15),
+        rgba(0,80,255,0.15)
+    );
+
+    position:relative;
+
+    overflow:hidden;
+}
+
+.hero::before{
+
+    content:'';
+
+    position:absolute;
+
+    width:700px;
+    height:700px;
+
+    border-radius:50%;
+
+    background:
+    rgba(255,255,255,0.03);
+
+    animation:rotate 12s linear infinite;
+}
+
+@keyframes rotate{
+
+    from{
+        transform:rotate(0deg);
+    }
+
+    to{
+        transform:rotate(360deg);
+    }
+}
+
+.hero h1{
+
+    z-index:2;
+
+    font-size:70px;
+}
+
+.hero p{
+
+    z-index:2;
+
+    margin-top:15px;
+
+    font-size:20px;
+}
+
+/* =========================
+JOGOS
+========================= */
 
 .jogo{
+
+    margin-top:18px;
+
+    padding:22px;
+
+    border-radius:18px;
 
     display:flex;
 
@@ -141,56 +293,108 @@ h1{
 
     align-items:center;
 
-    padding:20px;
+    background:
+    rgba(255,255,255,0.05);
 
-    margin-top:15px;
+    transition:0.3s;
+}
 
-    border-radius:15px;
+.jogo:hover{
+
+    transform:scale(1.02);
 
     background:
     rgba(255,255,255,0.08);
 }
 
 .data{
-    color:yellow;
+
+    margin-top:5px;
+
+    color:#ffe600;
+
     font-size:14px;
 }
 
-/* INPUTS */
+/* =========================
+LIVE
+========================= */
+
+.live{
+
+    border-left:6px solid red;
+}
+
+.live-tag{
+
+    color:red;
+
+    font-weight:700;
+
+    animation:pulse 1s infinite;
+}
+
+@keyframes pulse{
+
+    0%{
+        opacity:1;
+    }
+
+    50%{
+        opacity:0.4;
+    }
+
+    100%{
+        opacity:1;
+    }
+}
+
+/* =========================
+INPUTS
+========================= */
 
 input,
 select{
 
     width:100%;
 
-    padding:12px;
-
-    margin-top:12px;
+    padding:14px;
 
     border:none;
 
-    border-radius:10px;
+    border-radius:14px;
+
+    margin-top:12px;
 
     font-size:16px;
+
+    background:white;
 }
 
-/* BOTÕES */
+/* =========================
+BUTTONS
+========================= */
 
 .btn{
 
     width:100%;
 
-    padding:14px;
+    padding:16px;
 
-    margin-top:15px;
+    margin-top:18px;
 
     border:none;
 
-    border-radius:12px;
+    border-radius:15px;
 
-    background:yellow;
+    background:
+    linear-gradient(
+        135deg,
+        #ffe600,
+        #ffbf00
+    );
 
-    font-weight:bold;
+    font-weight:700;
 
     cursor:pointer;
 
@@ -198,23 +402,31 @@ select{
 }
 
 .btn:hover{
-    transform:scale(1.03);
+
+    transform:scale(1.02);
+
+    box-shadow:
+    0 10px 25px rgba(255,230,0,0.3);
 }
 
-/* IA */
+/* =========================
+IA
+========================= */
 
 .ia-result{
 
-    margin-top:25px;
-
-    font-size:30px;
-
-    color:yellow;
+    margin-top:30px;
 
     text-align:center;
+
+    font-size:35px;
+
+    color:#ffe600;
 }
 
-/* CAMPO */
+/* =========================
+CAMPO
+========================= */
 
 .campo{
 
@@ -224,27 +436,21 @@ select{
 
     height:900px;
 
+    border-radius:35px;
+
     position:relative;
 
     overflow:hidden;
 
-    border-radius:30px;
-
     background:
     linear-gradient(
         0deg,
-        #188533,
-        #27a548
+        #167d30,
+        #29a847
     );
 
-    border:6px solid white;
-
-    box-shadow:
-    inset 0 0 40px rgba(0,0,0,0.4),
-    0 0 30px rgba(0,0,0,0.5);
+    border:7px solid white;
 }
-
-/* GRAMADO */
 
 .campo::before{
 
@@ -265,8 +471,6 @@ select{
     );
 }
 
-/* LINHAS */
-
 .linha-meio{
 
     position:absolute;
@@ -283,10 +487,10 @@ select{
 
     position:absolute;
 
-    width:150px;
-    height:150px;
+    width:180px;
+    height:180px;
 
-    border:4px solid white;
+    border:5px solid white;
 
     border-radius:50%;
 
@@ -296,31 +500,9 @@ select{
     transform:translate(-50%,-50%);
 }
 
-.area{
-
-    position:absolute;
-
-    width:300px;
-    height:120px;
-
-    border:4px solid white;
-
-    left:50%;
-
-    transform:translateX(-50%);
-}
-
-.area-top{
-    top:0;
-    border-top:none;
-}
-
-.area-bottom{
-    bottom:0;
-    border-bottom:none;
-}
-
-/* JOGADORES */
+/* =========================
+JOGADORES
+========================= */
 
 .jogador{
 
@@ -329,15 +511,13 @@ select{
 
     position:absolute;
 
-    border-radius:20px;
+    border-radius:24px;
 
     display:flex;
 
     justify-content:center;
 
     align-items:center;
-
-    cursor:grab;
 
     background:
     linear-gradient(
@@ -347,7 +527,9 @@ select{
     );
 
     box-shadow:
-    0 5px 15px rgba(0,0,0,0.4);
+    0 10px 20px rgba(0,0,0,0.4);
+
+    cursor:grab;
 
     transition:0.2s;
 }
@@ -360,15 +542,13 @@ select{
 
     width:75px;
 
-    background:transparent;
-
     border:none;
+
+    background:transparent;
 
     text-align:center;
 
-    font-size:12px;
-
-    font-weight:bold;
+    font-weight:700;
 }
 
 /* POSIÇÕES */
@@ -428,7 +608,9 @@ select{
     right:15%;
 }
 
-/* SELEÇÕES */
+/* =========================
+SELEÇÕES
+========================= */
 
 .lista-selecoes{
 
@@ -437,49 +619,138 @@ select{
     grid-template-columns:
     repeat(auto-fit,minmax(180px,1fr));
 
-    gap:15px;
+    gap:18px;
 
     margin-top:25px;
 }
 
 .selecao{
 
-    background:
-    rgba(255,255,255,0.12);
+    padding:18px;
 
-    padding:15px;
-
-    border-radius:15px;
-
-    cursor:pointer;
-
-    transition:0.3s;
+    border-radius:18px;
 
     text-align:center;
 
-    font-weight:bold;
+    cursor:pointer;
+
+    font-weight:700;
+
+    transition:0.3s;
+
+    background:
+    rgba(255,255,255,0.08);
 }
 
 .selecao:hover{
 
-    transform:scale(1.05);
+    transform:translateY(-5px);
 
     background:
-    rgba(255,255,255,0.2);
+    rgba(255,255,255,0.15);
 }
 
-/* ELENCO */
+/* =========================
+TABELA
+========================= */
 
-.escalacao{
+table{
 
-    margin-top:30px;
+    width:100%;
 
-    line-height:2;
+    border-collapse:collapse;
+
+    margin-top:20px;
 }
 
-/* RESPONSIVO */
+th,
+td{
+
+    padding:15px;
+
+    text-align:center;
+
+    border-bottom:
+    1px solid rgba(255,255,255,0.1);
+}
+
+/* =========================
+MATA-MATA
+========================= */
+
+.bracket{
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(auto-fit,minmax(220px,1fr));
+
+    gap:20px;
+
+    margin-top:25px;
+}
+
+.match{
+
+    padding:20px;
+
+    border-radius:18px;
+
+    background:
+    rgba(255,255,255,0.08);
+}
+
+/* =========================
+ESTÁDIOS
+========================= */
+
+.estadios{
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(auto-fit,minmax(300px,1fr));
+
+    gap:20px;
+
+    margin-top:25px;
+}
+
+.estadio{
+
+    border-radius:25px;
+
+    overflow:hidden;
+
+    background:
+    rgba(255,255,255,0.08);
+}
+
+.estadio img{
+
+    width:100%;
+    height:220px;
+
+    object-fit:cover;
+}
+
+.estadio-info{
+    padding:20px;
+}
+
+/* =========================
+RESPONSIVO
+========================= */
 
 @media(max-width:768px){
+
+    .hero h1{
+        font-size:45px;
+    }
+
+    h1{
+        font-size:35px;
+    }
 
     .campo{
         height:700px;
@@ -494,11 +765,6 @@ select{
         width:55px;
         font-size:10px;
     }
-
-    h1{
-        font-size:30px;
-    }
-
 }
 
 </style>
@@ -511,29 +777,23 @@ select{
 
 <nav>
 
-<button onclick="showPage('home')">
-🏠 Home
-</button>
+<button onclick="showPage('home')">🏠 Home</button>
 
-<button onclick="showPage('jogos')">
-⚽ Jogos
-</button>
+<button onclick="showPage('jogos')">⚽ Jogos</button>
 
-<button onclick="showPage('palpites')">
-🎯 Palpites
-</button>
+<button onclick="showPage('live')">🔴 Ao Vivo</button>
 
-<button onclick="showPage('ia')">
-🤖 IA Copa
-</button>
+<button onclick="showPage('tabela')">📊 Tabela</button>
 
-<button onclick="showPage('time')">
-⭐ Time Ideal
-</button>
+<button onclick="showPage('mata')">🏆 Mata-Mata</button>
 
-<button onclick="showPage('selecoes')">
-🌎 Seleções
-</button>
+<button onclick="showPage('ia')">🤖 IA</button>
+
+<button onclick="showPage('time')">⭐ Time Ideal</button>
+
+<button onclick="showPage('selecoes')">🌎 Seleções</button>
+
+<button onclick="showPage('estadios')">🏟️ Estádios</button>
 
 </nav>
 
@@ -541,15 +801,29 @@ select{
 
 <section id="home" class="page active">
 
-<h1>🏆 Copa World 2026</h1>
+<div class="hero">
+
+<h1>🏆 COPA WORLD 2026</h1>
+
+<p>
+O app definitivo da Copa do Mundo ⚽🔥
+</p>
+
+</div>
 
 <div class="card">
 
-<h2>Bem-vindo ao App da Copa!</h2>
+<h2>🔥 Recursos</h2>
 
-<p style="margin-top:15px;">
-Acompanhe jogos, simule resultados,
-monte times e explore seleções ⚽🔥
+<p style="margin-top:15px;line-height:2;">
+✅ Jogos oficiais<br>
+✅ IA simuladora<br>
+✅ Ultimate Team<br>
+✅ Tabela automática<br>
+✅ Mata-mata<br>
+✅ Seleções<br>
+✅ Estádios<br>
+✅ Sistema preparado para API real
 </p>
 
 </div>
@@ -560,63 +834,151 @@ monte times e explore seleções ⚽🔥
 
 <section id="jogos" class="page">
 
-<h1>⚽ Jogos da Copa</h1>
+<h1>⚽ Jogos Oficiais</h1>
 
 <div class="card">
 
 <div class="jogo">
 <div>
-<h3>🇧🇷 Brasil vs 🇦🇷 Argentina</h3>
-<p class="data">15 Junho 2026</p>
+<h3>🇧🇷 Brasil vs 🇲🇦 Marrocos</h3>
+<p class="data">13 Junho 2026 • 21:00</p>
 </div>
-<h2>19:00</h2>
-</div>
-
-<div class="jogo">
-<div>
-<h3>🇫🇷 França vs 🇩🇪 Alemanha</h3>
-<p class="data">18 Junho 2026</p>
-</div>
-<h2>16:00</h2>
+<h2>Grupo C</h2>
 </div>
 
 <div class="jogo">
 <div>
-<h3>🇪🇸 Espanha vs 🏴 Inglaterra</h3>
-<p class="data">21 Junho 2026</p>
+<h3>🇦🇷 Argentina vs 🇩🇿 Argélia</h3>
+<p class="data">16 Junho 2026 • 21:00</p>
 </div>
-<h2>21:00</h2>
+<h2>Grupo J</h2>
+</div>
+
+<div class="jogo">
+<div>
+<h3>🇫🇷 França vs 🇸🇳 Senegal</h3>
+<p class="data">16 Junho 2026 • 16:00</p>
+</div>
+<h2>Grupo I</h2>
 </div>
 
 </div>
 
 </section>
 
-<!-- PALPITES -->
+<!-- AO VIVO -->
 
-<section id="palpites" class="page">
+<section id="live" class="page">
 
-<h1>🎯 Faça seu Palpite</h1>
+<h1>🔴 Jogos Ao Vivo</h1>
 
 <div class="card">
 
-<select id="jogoSelect">
+<div class="jogo live">
 
-<option>Brasil vs Argentina</option>
-<option>França vs Alemanha</option>
-<option>Espanha vs Inglaterra</option>
+<div>
 
-</select>
+<h3>
+🇧🇷 Brasil 2 x 1 França 🇫🇷
+</h3>
 
-<input type="number" id="g1" placeholder="Gols Time 1">
+<p class="data">
+78' • MetLife Stadium
+</p>
 
-<input type="number" id="g2" placeholder="Gols Time 2">
+</div>
 
-<button class="btn" onclick="palpite()">
-Enviar Palpite
-</button>
+<div>
 
-<p id="resultado" style="margin-top:20px;"></p>
+<p class="live-tag">
+AO VIVO
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- TABELA -->
+
+<section id="tabela" class="page">
+
+<h1>📊 Tabela da Copa</h1>
+
+<div class="card">
+
+<table>
+
+<tr>
+<th>Seleção</th>
+<th>Pts</th>
+<th>SG</th>
+</tr>
+
+<tr>
+<td>🇧🇷 Brasil</td>
+<td>6</td>
+<td>+4</td>
+</tr>
+
+<tr>
+<td>🇲🇦 Marrocos</td>
+<td>3</td>
+<td>0</td>
+</tr>
+
+<tr>
+<td>🇯🇵 Japão</td>
+<td>1</td>
+<td>-2</td>
+</tr>
+
+<tr>
+<td>🇲🇽 México</td>
+<td>0</td>
+<td>-2</td>
+</tr>
+
+</table>
+
+</div>
+
+</section>
+
+<!-- MATA -->
+
+<section id="mata" class="page">
+
+<h1>🏆 Mata-Mata</h1>
+
+<div class="bracket">
+
+<div class="match">
+<h3>Oitavas</h3>
+<br>
+🇧🇷 Brasil vs 🇵🇹 Portugal
+</div>
+
+<div class="match">
+<h3>Quartas</h3>
+<br>
+🇧🇷 Brasil vs 🇫🇷 França
+</div>
+
+<div class="match">
+<h3>Semi</h3>
+<br>
+🇧🇷 Brasil vs 🇦🇷 Argentina
+</div>
+
+<div class="match">
+<h3>Final</h3>
+<br>
+🇧🇷 Brasil vs 🏴 Inglaterra
+</div>
 
 </div>
 
@@ -644,18 +1006,15 @@ Simular Copa
 
 <section id="time" class="page">
 
-<h1>⭐ Monte seu Time Ideal</h1>
+<h1>⭐ Monte seu Time</h1>
 
 <div class="card">
 
-<select id="formacao">
+<select>
 
 <option>4-3-3</option>
 <option>4-4-2</option>
 <option>3-5-2</option>
-<option>3-4-3</option>
-<option>4-5-1</option>
-<option>5-4-1</option>
 
 </select>
 
@@ -664,10 +1023,6 @@ Simular Copa
 <div class="linha-meio"></div>
 
 <div class="circulo"></div>
-
-<div class="area area-top"></div>
-
-<div class="area area-bottom"></div>
 
 <div class="jogador gk">
 <input value="Alisson">
@@ -723,65 +1078,83 @@ Simular Copa
 
 <section id="selecoes" class="page">
 
-<h1>🌎 Seleções da Copa 2026</h1>
+<h1>🌎 Seleções</h1>
 
 <div class="card">
 
-<h2>Escolha uma seleção</h2>
-
 <div class="lista-selecoes">
 
-<div class="selecao" onclick="mostrarSelecao('Brasil')">
+<div class="selecao">
 🇧🇷 Brasil
 </div>
 
-<div class="selecao" onclick="mostrarSelecao('Argentina')">
+<div class="selecao">
 🇦🇷 Argentina
 </div>
 
-<div class="selecao" onclick="mostrarSelecao('França')">
+<div class="selecao">
 🇫🇷 França
 </div>
 
-<div class="selecao" onclick="mostrarSelecao('Alemanha')">
+<div class="selecao">
 🇩🇪 Alemanha
 </div>
 
-<div class="selecao" onclick="mostrarSelecao('Espanha')">
-🇪🇸 Espanha
-</div>
-
-<div class="selecao" onclick="mostrarSelecao('Portugal')">
-🇵🇹 Portugal
-</div>
-
-<div class="selecao" onclick="mostrarSelecao('Inglaterra')">
+<div class="selecao">
 🏴 Inglaterra
 </div>
 
-<div class="selecao" onclick="mostrarSelecao('Holanda')">
-🇳🇱 Holanda
-</div>
-
-<div class="selecao" onclick="mostrarSelecao('Uruguai')">
-🇺🇾 Uruguai
-</div>
-
-<div class="selecao" onclick="mostrarSelecao('Croacia')">
-🇭🇷 Croácia
-</div>
-
-<div class="selecao" onclick="mostrarSelecao('Marrocos')">
-🇲🇦 Marrocos
-</div>
-
-<div class="selecao" onclick="mostrarSelecao('Japao')">
-🇯🇵 Japão
+<div class="selecao">
+🇵🇹 Portugal
 </div>
 
 </div>
 
-<div class="escalacao" id="escalacao"></div>
+</div>
+
+</section>
+
+<!-- ESTÁDIOS -->
+
+<section id="estadios" class="page">
+
+<h1>🏟️ Estádios</h1>
+
+<div class="estadios">
+
+<div class="estadio">
+
+<img src="https://images.unsplash.com/photo-1508098682722-e99c643e7485?q=80&w=1200&auto=format&fit=crop">
+
+<div class="estadio-info">
+
+<h2>MetLife Stadium</h2>
+
+<p style="margin-top:10px;">
+🇺🇸 Nova Jersey<br>
+Capacidade: 82.500
+</p>
+
+</div>
+
+</div>
+
+<div class="estadio">
+
+<img src="https://images.unsplash.com/photo-1517466787929-bc90951d0974?q=80&w=1200&auto=format&fit=crop">
+
+<div class="estadio-info">
+
+<h2>Azteca</h2>
+
+<p style="margin-top:10px;">
+🇲🇽 Cidade do México<br>
+Capacidade: 87.000
+</p>
+
+</div>
+
+</div>
 
 </div>
 
@@ -789,7 +1162,9 @@ Simular Copa
 
 <script>
 
-/* TROCAR PÁGINAS */
+/* =========================
+PAGES
+========================= */
 
 function showPage(pageId){
 
@@ -797,7 +1172,9 @@ function showPage(pageId){
     document.querySelectorAll(".page");
 
     pages.forEach(page => {
+
         page.classList.remove("active");
+
     });
 
     document
@@ -805,32 +1182,9 @@ function showPage(pageId){
     .classList.add("active");
 }
 
-/* PALPITES */
-
-function palpite(){
-
-    let jogo =
-    document.getElementById("jogoSelect").value;
-
-    let g1 =
-    document.getElementById("g1").value;
-
-    let g2 =
-    document.getElementById("g2").value;
-
-    document
-    .getElementById("resultado")
-    .innerHTML =
-
-    "🔥 Seu palpite: "
-    + jogo +
-    " → "
-    + g1 +
-    " x "
-    + g2;
-}
-
-/* IA */
+/* =========================
+IA
+========================= */
 
 function simularCopa(){
 
@@ -840,12 +1194,13 @@ function simularCopa(){
         "🇦🇷 Argentina",
         "🇫🇷 França",
         "🇩🇪 Alemanha",
-        "🇪🇸 Espanha",
-        "🏴 Inglaterra"
+        "🏴 Inglaterra",
+        "🇵🇹 Portugal"
 
     ];
 
     let campeao =
+
     times[
         Math.floor(
             Math.random()*times.length
@@ -860,7 +1215,9 @@ function simularCopa(){
     + campeao;
 }
 
-/* DRAG */
+/* =========================
+DRAG PLAYERS
+========================= */
 
 const jogadores =
 document.querySelectorAll(".jogador");
@@ -922,150 +1279,21 @@ jogadores.forEach(jogador => {
     };
 });
 
-/* SELEÇÕES */
+/* =========================
+AUTO FUTURO API
+========================= */
 
-const selecoes = {
+async function atualizarAutomaticamente(){
 
-Brasil: {
-
-formacao:"4-3-3",
-
-jogadores:[
-
-"🧤 Alisson",
-"🧤 Bento",
-"🛡️ Marquinhos",
-"🛡️ Militão",
-"🛡️ Bremer",
-"🛡️ Danilo",
-"🛡️ Arana",
-"🎯 Casemiro",
-"🎯 Bruno Guimarães",
-"🎯 Paquetá",
-"🎯 Andreas Pereira",
-"🔥 Vini Jr",
-"🔥 Rodrygo",
-"🔥 Endrick",
-"🔥 Martinelli"
-
-]
-
-},
-
-Argentina: {
-
-formacao:"4-4-2",
-
-jogadores:[
-
-"🧤 Emiliano Martínez",
-"🛡️ Romero",
-"🛡️ Otamendi",
-"🎯 Enzo Fernández",
-"🎯 De Paul",
-"🔥 Messi",
-"🔥 Julián Álvarez",
-"🔥 Lautaro Martínez"
-
-]
-
-},
-
-França: {
-
-formacao:"4-3-3",
-
-jogadores:[
-
-"🧤 Maignan",
-"🛡️ Saliba",
-"🛡️ Koundé",
-"🛡️ Theo Hernández",
-"🎯 Camavinga",
-"🎯 Tchouaméni",
-"🎯 Griezmann",
-"🔥 Mbappé",
-"🔥 Dembélé"
-
-]
-
-},
-
-Alemanha: {
-
-formacao:"4-2-3-1",
-
-jogadores:[
-
-"🧤 Ter Stegen",
-"🛡️ Rüdiger",
-"🛡️ Tah",
-"🎯 Musiala",
-"🎯 Gündogan",
-"🔥 Havertz",
-"🔥 Sané"
-
-]
-
-},
-
-Portugal: {
-
-formacao:"4-3-3",
-
-jogadores:[
-
-"🧤 Diogo Costa",
-"🛡️ Rúben Dias",
-"🛡️ João Cancelo",
-"🎯 Bernardo Silva",
-"🎯 Bruno Fernandes",
-"🔥 Cristiano Ronaldo",
-"🔥 Rafael Leão"
-
-]
-
+    console.log(
+        "🛰️ Sistema pronto para API real."
+    );
 }
 
-};
-
-/* MOSTRAR */
-
-function mostrarSelecao(time){
-
-    let escalacao =
-    document.getElementById("escalacao");
-
-    let selecao =
-    selecoes[time];
-
-    if(!selecao){
-
-        escalacao.innerHTML =
-        "<h2>🌎 " +
-        time +
-        "</h2><br>Convocados ainda não adicionados.";
-
-        return;
-    }
-
-    let html =
-
-    "<h2>🌎 " + time + "</h2>" +
-
-    "<br><strong>⚽ Formação:</strong> "
-    + selecao.formacao +
-
-    "<br><br>";
-
-    selecao.jogadores.forEach(jogador => {
-
-        html += jogador + "<br>";
-
-    });
-
-    escalacao.innerHTML = html;
-}
+setInterval(
+    atualizarAutomaticamente,
+    60000
+);
 
 </script>
 
