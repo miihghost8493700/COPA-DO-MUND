@@ -20,7 +20,6 @@
 }
 
 body{
-
     background:
     linear-gradient(
         135deg,
@@ -29,7 +28,6 @@ body{
     );
 
     color:white;
-
     overflow-x:hidden;
 }
 
@@ -49,16 +47,15 @@ nav{
 
     flex-wrap:wrap;
 
+    background:rgba(0,0,0,0.3);
+
+    backdrop-filter:blur(10px);
+
     position:sticky;
 
     top:0;
 
     z-index:999;
-
-    background:
-    rgba(0,0,0,0.3);
-
-    backdrop-filter:blur(10px);
 }
 
 nav button{
@@ -69,11 +66,11 @@ nav button{
 
     border-radius:15px;
 
+    cursor:pointer;
+
     background:yellow;
 
     font-weight:bold;
-
-    cursor:pointer;
 
     transition:0.3s;
 }
@@ -85,11 +82,8 @@ nav button:hover{
 /* PÁGINAS */
 
 .page{
-
     display:none;
-
     padding:40px;
-
     animation:fade 0.5s;
 }
 
@@ -111,12 +105,10 @@ nav button:hover{
 
 }
 
-/* TITULOS */
+/* TÍTULOS */
 
 h1{
-
     font-size:42px;
-
     margin-bottom:20px;
 }
 
@@ -157,7 +149,7 @@ select{
     font-size:16px;
 }
 
-/* BOTÃO */
+/* BOTÕES */
 
 .btn{
 
@@ -303,10 +295,10 @@ select{
         #d9d9d9
     );
 
+    cursor:grab;
+
     box-shadow:
     0 5px 15px rgba(0,0,0,0.4);
-
-    cursor:grab;
 }
 
 .jogador input{
@@ -428,7 +420,7 @@ select{
     line-height:2;
 }
 
-/* STATUS */
+/* API STATUS */
 
 .api-status{
 
@@ -440,6 +432,8 @@ select{
 
     background:
     rgba(255,255,0,0.2);
+
+    color:#fff;
 }
 
 /* RESPONSIVO */
@@ -458,10 +452,6 @@ select{
     .jogador input{
         width:55px;
         font-size:10px;
-    }
-
-    h1{
-        font-size:30px;
     }
 
 }
@@ -510,16 +500,16 @@ select{
 
 <div class="card">
 
-<h2>Bem-vindo ao App da Copa!</h2>
+<h2>App Interativo da Copa</h2>
 
 <p style="margin-top:15px;">
-Acompanhe jogos oficiais, simule resultados,
-crie times e explore seleções ⚽🔥
+Resultados, IA, seleções,
+convocados e muito mais ⚽🔥
 </p>
 
 <div class="api-status">
 
-🛰️ Sistema preparado para atualização automática dos jogos e convocados futuramente.
+🛰️ Sistema preparado para atualização automática via API.
 
 </div>
 
@@ -531,13 +521,31 @@ crie times e explore seleções ⚽🔥
 
 <section id="jogos" class="page">
 
-<h1>⚽ Jogos Oficiais da Copa 2026</h1>
+<h1>⚽ Jogos</h1>
 
 <div class="card">
 
-<h2>🌎 Fase de Grupos</h2>
+<div class="jogo">
 
-<div id="listaJogos"></div>
+<div>
+<h3>🇧🇷 Brasil vs 🇦🇷 Argentina</h3>
+<p class="data">15 Junho 2026</p>
+</div>
+
+<h2>19:00</h2>
+
+</div>
+
+<div class="jogo">
+
+<div>
+<h3>🇫🇷 França vs 🇩🇪 Alemanha</h3>
+<p class="data">18 Junho 2026</p>
+</div>
+
+<h2>16:00</h2>
+
+</div>
 
 </div>
 
@@ -547,15 +555,14 @@ crie times e explore seleções ⚽🔥
 
 <section id="palpites" class="page">
 
-<h1>🎯 Faça seu Palpite</h1>
+<h1>🎯 Palpites</h1>
 
 <div class="card">
 
 <select id="jogoSelect">
 
-<option>Brasil vs Marrocos</option>
-<option>Argentina vs Argélia</option>
-<option>França vs Senegal</option>
+<option>Brasil vs Argentina</option>
+<option>França vs Alemanha</option>
 
 </select>
 
@@ -595,7 +602,7 @@ Simular Copa
 
 <section id="time" class="page">
 
-<h1>⭐ Monte seu Time Ideal</h1>
+<h1>⭐ Time Ideal</h1>
 
 <div class="card">
 
@@ -671,6 +678,8 @@ Simular Copa
 
 <div class="card">
 
+<h2>Escolha uma seleção</h2>
+
 <div class="lista-selecoes">
 
 <div class="selecao" onclick="mostrarSelecao('Brasil')">
@@ -681,7 +690,7 @@ Simular Copa
 🇦🇷 Argentina
 </div>
 
-<div class="selecao" onclick="mostrarSelecao('Franca')">
+<div class="selecao" onclick="mostrarSelecao('França')">
 🇫🇷 França
 </div>
 
@@ -691,6 +700,10 @@ Simular Copa
 
 <div class="selecao" onclick="mostrarSelecao('Alemanha')">
 🇩🇪 Alemanha
+</div>
+
+<div class="selecao" onclick="mostrarSelecao('Espanha')">
+🇪🇸 Espanha
 </div>
 
 </div>
@@ -718,119 +731,6 @@ function showPage(pageId){
     .getElementById(pageId)
     .classList.add("active");
 }
-
-/* JOGOS */
-
-const jogosCopa = [
-
-{
-grupo:"Grupo C",
-time1:"🇧🇷 Brasil",
-time2:"🇲🇦 Marrocos",
-data:"13 Junho 2026",
-hora:"21:00"
-},
-
-{
-grupo:"Grupo J",
-time1:"🇦🇷 Argentina",
-time2:"🇩🇿 Argélia",
-data:"16 Junho 2026",
-hora:"21:00"
-},
-
-{
-grupo:"Grupo I",
-time1:"🇫🇷 França",
-time2:"🇸🇳 Senegal",
-data:"16 Junho 2026",
-hora:"16:00"
-},
-
-{
-grupo:"Grupo K",
-time1:"🇵🇹 Portugal",
-time2:"🇨🇩 Congo",
-data:"17 Junho 2026",
-hora:"17:00"
-},
-
-{
-grupo:"Grupo L",
-time1:"🏴 Inglaterra",
-time2:"🇭🇷 Croácia",
-data:"17 Junho 2026",
-hora:"18:00"
-},
-
-{
-grupo:"Grupo E",
-time1:"🇩🇪 Alemanha",
-time2:"🇨🇼 Curaçao",
-data:"14 Junho 2026",
-hora:"18:00"
-},
-
-{
-grupo:"Grupo H",
-time1:"🇪🇸 Espanha",
-time2:"🇺🇾 Uruguai",
-data:"15 Junho 2026",
-hora:"21:00"
-},
-
-{
-grupo:"Grupo F",
-time1:"🇳🇱 Holanda",
-time2:"🇯🇵 Japão",
-data:"14 Junho 2026",
-hora:"21:00"
-}
-
-];
-
-function carregarJogos(){
-
-    let lista =
-    document.getElementById("listaJogos");
-
-    lista.innerHTML = "";
-
-    jogosCopa.forEach(jogo => {
-
-        lista.innerHTML += `
-
-        <div class="jogo">
-
-            <div>
-
-                <h3>
-                ${jogo.time1}
-                vs
-                ${jogo.time2}
-                </h3>
-
-                <p class="data">
-                ${jogo.grupo}
-                •
-                ${jogo.data}
-                </p>
-
-            </div>
-
-            <h2>
-            ${jogo.hora}
-            </h2>
-
-        </div>
-
-        `;
-
-    });
-
-}
-
-carregarJogos();
 
 /* PALPITES */
 
@@ -867,8 +767,8 @@ function simularCopa(){
         "🇦🇷 Argentina",
         "🇫🇷 França",
         "🇵🇹 Portugal",
-        "🏴 Inglaterra",
-        "🇩🇪 Alemanha"
+        "🇩🇪 Alemanha",
+        "🇪🇸 Espanha"
 
     ];
 
@@ -943,20 +843,26 @@ jogadores.forEach(jogador => {
     };
 });
 
-/* SELEÇÕES */
+/* BASE DAS SELEÇÕES */
 
 const selecoes = {
 
-Brasil:{
+Brasil: {
 
 formacao:"4-3-3",
 
 jogadores:[
 
 "🧤 Alisson",
+"🧤 Bento",
 "🛡️ Marquinhos",
 "🛡️ Militão",
+"🛡️ Bremer",
+"🛡️ Danilo",
+"🛡️ Arana",
 "🎯 Casemiro",
+"🎯 Bruno Guimarães",
+"🎯 Paquetá",
 "🔥 Vini Jr",
 "🔥 Rodrygo",
 "🔥 Endrick"
@@ -965,7 +871,7 @@ jogadores:[
 
 },
 
-Argentina:{
+Argentina: {
 
 formacao:"4-4-2",
 
@@ -973,7 +879,9 @@ jogadores:[
 
 "🧤 Emiliano Martínez",
 "🛡️ Romero",
+"🛡️ Otamendi",
 "🎯 De Paul",
+"🎯 Enzo Fernández",
 "🔥 Messi",
 "🔥 Julián Álvarez"
 
@@ -981,7 +889,7 @@ jogadores:[
 
 },
 
-Franca:{
+França: {
 
 formacao:"4-3-3",
 
@@ -989,14 +897,19 @@ jogadores:[
 
 "🧤 Maignan",
 "🛡️ Saliba",
+"🛡️ Koundé",
 "🎯 Camavinga",
-"🔥 Mbappé"
+"🎯 Tchouaméni",
+"🔥 Mbappé",
+"🔥 Dembélé"
 
 ]
 
 }
 
 };
+
+/* MOSTRAR SELEÇÃO */
 
 function mostrarSelecao(time){
 
@@ -1009,7 +922,10 @@ function mostrarSelecao(time){
     if(!selecao){
 
         escalacao.innerHTML =
-        "Convocados ainda não adicionados.";
+
+        "<h2>🌎 "
+        + time +
+        "</h2><br>Convocados ainda não adicionados.";
 
         return;
     }
@@ -1035,27 +951,34 @@ function mostrarSelecao(time){
 
     html +=
 
-    "<br><br>🛰️ Sistema preparado para atualização automática via API.";
+    "<br><br>🛰️ Futuramente os dados poderão ser carregados automaticamente via API.";
 
     escalacao.innerHTML = html;
 }
 
-/* SISTEMA FUTURO API */
+/* SISTEMA PREPARADO PARA API */
 
-async function atualizarAutomaticamente(){
+async function buscarConvocadosAPI(time){
 
-    console.log(
-        "🛰️ Sistema pronto para APIs oficiais."
+    /*
+    EXEMPLO FUTURO:
+
+    const response = await fetch(
+    'URL_DA_API'
     );
 
-}
+    const data = await response.json();
 
-setInterval(
-    atualizarAutomaticamente,
-    60000
-);
+    */
+
+    console.log(
+        "Sistema pronto para integração com API:",
+        time
+    );
+}
 
 </script>
 
 </body>
+
 </html>
