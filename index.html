@@ -1569,69 +1569,141 @@ function simularCopa(){
     + campeao;
 }
 
+<script>
+
 /* =========================
-DRAG PLAYERS
+DRAG & DROP CORRIGIDO
 ========================= */
+
+const campo =
+document.querySelector(".campo");
 
 const jogadores =
 document.querySelectorAll(".jogador");
 
-jogadores.forEach(jogador => {
+jogadores.forEach(jogador=>{
 
-    jogador.onmousedown = function(event){
+let dragging = false;
 
-        let shiftX =
-        event.clientX -
-        jogador.getBoundingClientRect().left;
+let offsetX = 0;
+let offsetY = 0;
 
-        let shiftY =
-        event.clientY -
-        jogador.getBoundingClientRect().top;
+jogador.addEventListener(
 
-        jogador.style.zIndex = 1000;
+"mousedown",
 
-        function moveAt(pageX,pageY){
+function(e){
 
-            jogador.style.left =
-            pageX - shiftX + 'px';
+dragging = true;
 
-            jogador.style.top =
-            pageY - shiftY + 'px';
-        }
+jogador.style.zIndex = 9999;
 
-        moveAt(
-            event.pageX,
-            event.pageY
-        );
+const rect =
+jogador.getBoundingClientRect();
 
-        function onMouseMove(event){
+offsetX =
+e.clientX - rect.left;
 
-            moveAt(
-                event.pageX,
-                event.pageY
-            );
-        }
+offsetY =
+e.clientY - rect.top;
 
-        document.addEventListener(
-            'mousemove',
-            onMouseMove
-        );
+jogador.style.cursor =
+"grabbing";
 
-        jogador.onmouseup = function(){
+}
 
-            document.removeEventListener(
-                'mousemove',
-                onMouseMove
-            );
+);
 
-            jogador.onmouseup = null;
-        };
-    };
+document.addEventListener(
 
-    jogador.ondragstart = function(){
-        return false;
-    };
+"mousemove",
+
+function(e){
+
+if(!dragging) return;
+
+const campoRect =
+campo.getBoundingClientRect();
+
+let x =
+e.clientX
+-
+campoRect.left
+-
+offsetX;
+
+let y =
+e.clientY
+-
+campoRect.top
+-
+offsetY;
+
+/* limita dentro do campo */
+
+const maxX =
+campo.clientWidth
+-
+jogador.offsetWidth;
+
+const maxY =
+campo.clientHeight
+-
+jogador.offsetHeight;
+
+x =
+Math.max(
+0,
+Math.min(maxX,x)
+);
+
+y =
+Math.max(
+0,
+Math.min(maxY,y)
+);
+
+jogador.style.left =
+x + "px";
+
+jogador.style.top =
+y + "px";
+
+}
+
+);
+
+document.addEventListener(
+
+"mouseup",
+
+function(){
+
+dragging = false;
+
+jogador.style.cursor =
+"grab";
+
+jogador.style.zIndex = 5;
+
+}
+
+);
+
 });
+
+/* impede arrastar imagens */
+
+document
+.querySelectorAll("img")
+
+.forEach(img=>{
+
+img.draggable = false;
+
+});
+
+</script>
 
 /* =========================
 AUTO FUTURO API
