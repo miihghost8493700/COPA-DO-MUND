@@ -866,42 +866,6 @@ O app definitivo da Copa do Mundo ⚽🔥
 
 </section>
 
-<!-- AO VIVO -->
-
-<section id="live" class="page">
-
-<h1>🔴 Jogos Ao Vivo</h1>
-
-<div class="card">
-
-<div class="jogo live">
-
-<div>
-
-<h3>
-🇧🇷 Brasil 2 x 1 França 🇫🇷
-</h3>
-
-<p class="data">
-78' • MetLife Stadium
-</p>
-
-</div>
-
-<div>
-
-<p class="live-tag">
-AO VIVO
-</p>
-
-</div>
-
-</div>
-
-</div>
-
-</section>
-
 <!-- TABELA -->
 
 <section id="tabela" class="page">
@@ -1572,138 +1536,69 @@ function simularCopa(){
 <script>
 
 /* =========================
-DRAG & DROP CORRIGIDO
+DRAG PLAYERS
 ========================= */
-
-const campo =
-document.querySelector(".campo");
 
 const jogadores =
 document.querySelectorAll(".jogador");
 
-jogadores.forEach(jogador=>{
+jogadores.forEach(jogador => {
 
-let dragging = false;
+    jogador.onmousedown = function(event){
 
-let offsetX = 0;
-let offsetY = 0;
+        let shiftX =
+        event.clientX -
+        jogador.getBoundingClientRect().left;
 
-jogador.addEventListener(
+        let shiftY =
+        event.clientY -
+        jogador.getBoundingClientRect().top;
 
-"mousedown",
+        jogador.style.zIndex = 1000;
 
-function(e){
+        function moveAt(pageX,pageY){
 
-dragging = true;
+            jogador.style.left =
+            pageX - shiftX + 'px';
 
-jogador.style.zIndex = 9999;
+            jogador.style.top =
+            pageY - shiftY + 'px';
+        }
 
-const rect =
-jogador.getBoundingClientRect();
+        moveAt(
+            event.pageX,
+            event.pageY
+        );
 
-offsetX =
-e.clientX - rect.left;
+        function onMouseMove(event){
 
-offsetY =
-e.clientY - rect.top;
+            moveAt(
+                event.pageX,
+                event.pageY
+            );
+        }
 
-jogador.style.cursor =
-"grabbing";
+        document.addEventListener(
+            'mousemove',
+            onMouseMove
+        );
 
-}
+        jogador.onmouseup = function(){
 
-);
+            document.removeEventListener(
+                'mousemove',
+                onMouseMove
+            );
 
-document.addEventListener(
+            jogador.onmouseup = null;
+        };
+    };
 
-"mousemove",
-
-function(e){
-
-if(!dragging) return;
-
-const campoRect =
-campo.getBoundingClientRect();
-
-let x =
-e.clientX
--
-campoRect.left
--
-offsetX;
-
-let y =
-e.clientY
--
-campoRect.top
--
-offsetY;
-
-/* limita dentro do campo */
-
-const maxX =
-campo.clientWidth
--
-jogador.offsetWidth;
-
-const maxY =
-campo.clientHeight
--
-jogador.offsetHeight;
-
-x =
-Math.max(
-0,
-Math.min(maxX,x)
-);
-
-y =
-Math.max(
-0,
-Math.min(maxY,y)
-);
-
-jogador.style.left =
-x + "px";
-
-jogador.style.top =
-y + "px";
-
-}
-
-);
-
-document.addEventListener(
-
-"mouseup",
-
-function(){
-
-dragging = false;
-
-jogador.style.cursor =
-"grab";
-
-jogador.style.zIndex = 5;
-
-}
-
-);
+    jogador.ondragstart = function(){
+        return false;
+    };
 
 });
-
-/* impede arrastar imagens */
-
-document
-.querySelectorAll("img")
-
-.forEach(img=>{
-
-img.draggable = false;
-
-});
-
-</script>
 
 /* =========================
 AUTO FUTURO API
