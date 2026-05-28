@@ -1240,69 +1240,104 @@ function simularCopa(){
 }
 
 /* =========================
-DRAG PLAYERS
+DRAG PLAYERS FIX
 ========================= */
 
 const jogadores =
 document.querySelectorAll(".jogador");
 
-jogadores.forEach(jogador => {
+jogadores.forEach(jogador=>{
 
-    jogador.onmousedown = function(event){
+    jogador.addEventListener(
+
+    "mousedown",
+
+    function(e){
+
+        e.preventDefault();
+
+        jogador.style.zIndex = 999;
+
+        /* remove posições antigas */
+
+        jogador.style.bottom = "auto";
+        jogador.style.right = "auto";
+
+        let rect =
+        jogador.getBoundingClientRect();
 
         let shiftX =
-        event.clientX -
-        jogador.getBoundingClientRect().left;
+        e.clientX - rect.left;
 
         let shiftY =
-        event.clientY -
-        jogador.getBoundingClientRect().top;
+        e.clientY - rect.top;
 
-        jogador.style.zIndex = 1000;
-
-        function moveAt(pageX,pageY){
+        function mover(event){
 
             jogador.style.left =
-            pageX - shiftX + 'px';
+
+            event.pageX
+            -
+            shiftX
+            +
+            "px";
 
             jogador.style.top =
-            pageY - shiftY + 'px';
+
+            event.pageY
+            -
+            shiftY
+            +
+            "px";
         }
 
-        moveAt(
-            event.pageX,
-            event.pageY
-        );
+        mover(e);
 
-        function onMouseMove(event){
+        function mouseMove(event){
 
-            moveAt(
-                event.pageX,
-                event.pageY
-            );
+            mover(event);
+
         }
 
         document.addEventListener(
-            'mousemove',
-            onMouseMove
+
+        "mousemove",
+
+        mouseMove
+
         );
 
-        jogador.onmouseup = function(){
+        document.addEventListener(
+
+        "mouseup",
+
+        function stop(){
 
             document.removeEventListener(
-                'mousemove',
-                onMouseMove
+
+            "mousemove",
+
+            mouseMove
+
             );
 
-            jogador.onmouseup = null;
-        };
-    };
+            document.removeEventListener(
 
-    jogador.ondragstart = function(){
-        return false;
-    };
+            "mouseup",
+
+            stop
+
+            );
+
+            jogador.style.zIndex = 1;
+
+        });
+
+    });
+
+    jogador.ondragstart = ()=>false;
+
 });
-
 /* =========================
 AUTO FUTURO API
 ========================= */
